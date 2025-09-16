@@ -61,6 +61,41 @@ table 'Mean Income Overall'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Wage Index' = ```
+			
+			VAR BaseYear = 2010
+			VAR BaseWage =
+			    CALCULATE(
+			        AVERAGE('Mean Income Overall'[Mean Income (RM)]),
+			        'Mean Income Overall'[Year] = BaseYear
+			    )
+			RETURN
+			    DIVIDE(
+			        AVERAGE('Mean Income Overall'[Mean Income (RM)]),
+			        BaseWage
+			    ) * 100
+			
+			```
+		lineageTag: 88b0003e-c4fb-4271-9047-63e2cf60fec7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Real Wage Index' = ```
+			
+			VAR BaseYear = 2015
+			VAR BaseRealWage =
+			    CALCULATE(
+			        [Real Wage],
+			        'Mean Income Overall'[Year] = BaseYear
+			    )
+			RETURN
+			    DIVIDE([Real Wage], BaseRealWage) * 100
+			
+			```
+		lineageTag: 04f1a4ea-db07-41d5-b7f7-ab8a154bc0f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Year
 		dataType: int64
 		formatString: 0

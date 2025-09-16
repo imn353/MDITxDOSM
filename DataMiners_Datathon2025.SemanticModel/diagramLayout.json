@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1118.7216732353077,
-        "y": 59026.057672405674
+        "x": 576.84141750470019,
+        "y": 132975.72568323964
       },
       "nodes": [
         {
           "location": {
             "x": 1562.8504260547716,
-            "y": 59835.497797355092
+            "y": 133048.52658975782
           },
           "nodeIndex": "Annual Inflation Rate",
           "nodeLineageTag": "d2f6c2ec-e233-461f-8f5e-924e6404d336",
@@ -19,28 +19,15 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 1
-        },
-        {
-          "location": {
-            "x": 732.08799030460966,
-            "y": 59766.536099631478
-          },
-          "nodeIndex": "Monthly CPI Index By State",
-          "nodeLineageTag": "875e7709-3365-4225-9fdb-d4444bedf50c",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
           "zIndex": 2
         },
         {
           "location": {
-            "x": 2291.7605047404368,
-            "y": 59214.553845231443
+            "x": 732.08799030460966,
+            "y": 132979.56489203419
           },
-          "nodeIndex": "Monthly Household Income By State",
-          "nodeLineageTag": "a557d08c-51c0-4632-896f-b5d01d67309d",
+          "nodeIndex": "Monthly CPI Index By State",
+          "nodeLineageTag": "875e7709-3365-4225-9fdb-d4444bedf50c",
           "size": {
             "height": 176,
             "width": 234
@@ -49,60 +36,60 @@
         },
         {
           "location": {
-            "x": 39,
-            "y": 59494.548033922176
+            "x": 2291.7605047404368,
+            "y": 132427.58263763416
           },
-          "nodeIndex": "Monthly Inflation Rate By State",
+          "nodeIndex": "Monthly Household Income By State",
+          "nodeLineageTag": "a557d08c-51c0-4632-896f-b5d01d67309d",
           "size": {
-            "height": 200,
+            "height": 176,
             "width": 234
           },
           "zIndex": 4
         },
         {
           "location": {
-            "x": 190,
-            "y": 58591.444518297176
+            "x": 39,
+            "y": 132707.57682632489
           },
-          "nodeIndex": "Innequality By State",
+          "nodeIndex": "Monthly Inflation Rate By State",
           "size": {
-            "height": 152,
+            "height": 200,
             "width": 234
           },
           "zIndex": 5
         },
         {
           "location": {
-            "x": 778,
-            "y": 58570.423033922176
+            "x": 190,
+            "y": 131804.47331069989
           },
-          "nodeIndex": "Poverty By State",
+          "nodeIndex": "Innequality By State",
           "size": {
-            "height": 200,
+            "height": 152,
             "width": 234
           },
           "zIndex": 6
         },
         {
           "location": {
-            "x": 3014.9921507324207,
-            "y": 60134.773383638894
+            "x": 778,
+            "y": 131783.45182632489
           },
-          "nodeIndex": "Annual CPI Index",
-          "nodeLineageTag": "42cd9383-39e6-4d86-af19-0517bfe05c70",
+          "nodeIndex": "Poverty By State",
           "size": {
-            "height": 152,
+            "height": 200,
             "width": 234
           },
           "zIndex": 7
         },
         {
           "location": {
-            "x": 1112.2728078758341,
-            "y": 59073.917605612092
+            "x": 3014.9921507324207,
+            "y": 133347.80217604162
           },
-          "nodeIndex": "Annual Household Income",
-          "nodeLineageTag": "8ac65470-d433-4574-8e90-6b7a38c6481e",
+          "nodeIndex": "Annual CPI Index",
+          "nodeLineageTag": "42cd9383-39e6-4d86-af19-0517bfe05c70",
           "size": {
             "height": 152,
             "width": 234
@@ -111,21 +98,34 @@
         },
         {
           "location": {
-            "x": 1525.5023505769186,
-            "y": 58617.319704839574
+            "x": 1112.2728078758341,
+            "y": 132286.94639801481
           },
-          "nodeIndex": "Annual Average Inflation By State",
-          "nodeLineageTag": "97e0bdd6-b911-492c-9a76-d7f470e42ce7",
+          "nodeIndex": "Annual Household Income",
+          "nodeLineageTag": "8ac65470-d433-4574-8e90-6b7a38c6481e",
           "size": {
-            "height": 145,
-            "width": 234
+            "height": 152,
+            "width": 449.83054789105609
           },
           "zIndex": 9
         },
         {
           "location": {
+            "x": 717.92824423931677,
+            "y": 133335.37354051211
+          },
+          "nodeIndex": "Annual Average Inflation By State",
+          "nodeLineageTag": "97e0bdd6-b911-492c-9a76-d7f470e42ce7",
+          "size": {
+            "height": 145,
+            "width": 316.73504335823827
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
             "x": 2700.2466412173176,
-            "y": 59515.460084976505
+            "y": 132728.48887737922
           },
           "nodeIndex": "Mean Income By Gender",
           "nodeLineageTag": "71397231-83da-499e-8ec1-e7b75b71d3e0",
@@ -138,7 +138,7 @@
         {
           "location": {
             "x": 2553.4475757387113,
-            "y": 60137.997658721244
+            "y": 133351.02645112397
           },
           "nodeIndex": "Mean Income By Highest Certificate",
           "nodeLineageTag": "3aaacf36-d5a9-46e6-9def-185595236680",
@@ -151,7 +151,7 @@
         {
           "location": {
             "x": 1769.6799948465014,
-            "y": 59457.42585504485
+            "y": 132670.45464744756
           },
           "nodeIndex": "Mean Income By Sector",
           "nodeLineageTag": "be0ebf76-4583-4817-9cc3-26b71b255784",
@@ -164,7 +164,7 @@
         {
           "location": {
             "x": 1655.7785602283827,
-            "y": 60094.937229076568
+            "y": 133307.96602147928
           },
           "nodeIndex": "Mean Income By State",
           "nodeLineageTag": "8e795d35-a822-4030-83cc-5ff075e3ddc0",
@@ -177,7 +177,7 @@
         {
           "location": {
             "x": 4031.0185700634852,
-            "y": 59913.067585717879
+            "y": 133126.09637812059
           },
           "nodeIndex": "Mean Income By Strata",
           "nodeLineageTag": "9ca6b2da-9b2f-4a2b-a14c-2f8732a8b287",
@@ -190,7 +190,7 @@
         {
           "location": {
             "x": 3128.1620278898886,
-            "y": 59413.689561054882
+            "y": 132626.7183534576
           },
           "nodeIndex": "Mean Income Female",
           "nodeLineageTag": "fe0f5746-13a4-4384-aaa1-e40393f913e9",
@@ -203,7 +203,7 @@
         {
           "location": {
             "x": 3052.0266346148478,
-            "y": 59665.836427709204
+            "y": 132878.86522011191
           },
           "nodeIndex": "Mean Income Male",
           "nodeLineageTag": "f8dee326-b1ec-469d-a9df-f19c87d965d9",
@@ -216,7 +216,7 @@
         {
           "location": {
             "x": 2249.7431848394608,
-            "y": 59658.3146195264
+            "y": 132871.34341192912
           },
           "nodeIndex": "Mean Income Overall",
           "nodeLineageTag": "4a7d41dd-25be-4ce0-80f4-721afbb938a5",
@@ -225,10 +225,36 @@
             "width": 234
           },
           "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 1256.4309420405712,
+            "y": 133472.22510373307
+          },
+          "nodeIndex": "State",
+          "nodeLineageTag": "76fde2e9-567a-4584-a964-7dd854de8017",
+          "size": {
+            "height": 145,
+            "width": 191.65304532530172
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1144.8555289814008,
+            "y": 133074.01455452896
+          },
+          "nodeIndex": "Year",
+          "nodeLineageTag": "67758e3b-455d-42bf-a4a5-3b524ea4e438",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 19
         }
       ],
       "name": "All tables",
-      "zoomValue": 55.599173134922438,
+      "zoomValue": 78.357757658120491,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

@@ -1,0 +1,17 @@
+table State
+	lineageTag: 76fde2e9-567a-4584-a964-7dd854de8017
+
+	column State
+		lineageTag: 9066e525-a763-4d30-9fed-76e1834922ff
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Annual Average Inflation By State[State]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition State = calculated
+		mode: import
+		source = DISTINCT('Annual Average Inflation By State'[State])
+
+	annotation PBI_Id = 1eab36d53944424dbc8c7a7693834f93
+

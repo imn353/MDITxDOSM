@@ -27,6 +27,12 @@ table 'Mean Income By State'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Key = 'Mean Income By State'[State] & "-" & [Year]
+		lineageTag: 7491b486-ba40-4dd8-a093-687749dbc64b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Mean Income By State' = m
 		mode: import
 		source =
@@ -45,9 +51,11 @@ table 'Mean Income By State'
 				    #"Replaced Value" = Table.ReplaceValue(#"Unpivoted Other Columns","2020r","2020",Replacer.ReplaceText,{"Attribute"}),
 				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2021r","2021",Replacer.ReplaceText,{"Attribute"}),
 				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","2022r","2022",Replacer.ReplaceText,{"Attribute"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value2",{{"Attribute", "Year"}, {"Value", "Mean Income (RM)"}})
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value2",{{"Attribute", "Year"}, {"Value", "Mean Income (RM)"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Key", each [State] & "-" & Text.From([Year])),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Added Custom",{"Key"})
 				in
-				    #"Renamed Columns"
+				    #"Removed Columns1"
 
 	annotation PBI_NavigationStepName = Navigation
 

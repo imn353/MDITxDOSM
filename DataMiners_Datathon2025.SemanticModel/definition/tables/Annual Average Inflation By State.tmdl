@@ -1,6 +1,11 @@
 table 'Annual Average Inflation By State'
 	lineageTag: 97e0bdd6-b911-492c-9a76-d7f470e42ce7
 
+	measure 'Average Inflation' = AVERAGE('Annual Average Inflation By State'[Annual Average Inflation])
+		lineageTag: cb823277-716d-487c-b9c9-6e47a039ad11
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column State
 		lineageTag: 6d9dcf79-ccbe-4895-9dcf-ce886863a81e
 		summarizeBy: none
@@ -26,6 +31,12 @@ table 'Annual Average Inflation By State'
 		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Key = 'Annual Average Inflation By State'[State] & "-" & [Year]
+		lineageTag: 2fb50aaa-e43a-4cd9-8acb-2ec2e1799590
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
 
 	partition 'Annual Average Inflation By State' = calculated
 		mode: import

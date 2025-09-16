@@ -82,3 +82,9 @@ relationship c947424e-5478-e186-02a5-b2c031b826e8
 	fromColumn: 'Mean Income Overall'.Year
 	toColumn: 'Annual CPI Index'.Year
 
+relationship ec44cc5f-cf36-9c3c-d395-cf6b60e4e8d9
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Annual Average Inflation By State'.Key
+	toColumn: 'Mean Income By State'.Key
+

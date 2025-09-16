@@ -10,7 +10,7 @@ annotation PBI_QueryOrder = ["Annual Inflation Rate","Monthly CPI Index By State
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBIDesktopVersion = 2.146.1254.0 (25.08)+791a7518fadc83da883d79322a2658aff57c8db3
+annotation PBIDesktopVersion = 2.146.705.0 (25.08)+b71502aff0a01340c88f384884ef42771068f115
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 
@@ -40,6 +40,8 @@ ref table 'Mean Income By State'
 ref table 'Mean Income By Sector'
 ref table 'Mean Income Female'
 ref table 'Mean Income By Gender'
+ref table State
+ref table Year
 
 ref cultureInfo en-US
 

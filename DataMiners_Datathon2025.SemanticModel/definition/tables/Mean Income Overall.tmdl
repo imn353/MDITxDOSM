@@ -23,6 +23,44 @@ table 'Mean Income Overall'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Real Wage' = ```
+			
+			VAR NominalWage = SUM('Mean Income Overall'[Mean Income (RM)])
+			VAR CPI = SUM('Annual CPI Index'[index])
+			RETURN
+			IF(
+			    NOT ISBLANK(CPI),
+			    DIVIDE(NominalWage, CPI) * 100
+			)
+			
+			```
+		lineageTag: 4aecb472-aaa0-4c1c-8918-20c8e4b9e495
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Real Wage Growth %' = ```
+			
+			VAR CurrentRealWage = [Real Wage]
+			VAR PrevRealWage =
+			    CALCULATE(
+			        [Real Wage],
+			        FILTER(
+			            ALL('Mean Income Overall'),
+			            'Mean Income Overall'[Year] = MAX('Mean Income Overall'[Year]) - 1
+			        )
+			    )
+			RETURN
+			IF(
+			    NOT ISBLANK(PrevRealWage),
+			    DIVIDE(CurrentRealWage - PrevRealWage, PrevRealWage, 0) * 100,
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 35b2286b-352c-464e-afd2-55463e7b9bec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Year
 		dataType: int64
 		formatString: 0

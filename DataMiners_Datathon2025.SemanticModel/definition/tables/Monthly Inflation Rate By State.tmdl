@@ -58,7 +58,7 @@ table 'Monthly Inflation Rate By State'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\cpi_2d_monthly_state_inflation.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\cpi_2d_monthly_state_inflation.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"division", type text}, {"inflation_yoy", type number}, {"inflation_mom", type number}}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"division"}),

@@ -31,7 +31,7 @@ table 'Mean Income By State'
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\User\Desktop\Datathon\JADUAL PENERBITAN SURVEI GAJI & UPAH 2023.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\JADUAL PENERBITAN SURVEI GAJI & UPAH 2023.xlsx"), null, true),
 				    #"JADUAL A8 Negeri Jum. Purata_Sheet" = Source{[Item="JADUAL A8 Negeri Jum. Purata",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(#"JADUAL A8 Negeri Jum. Purata_Sheet", [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"A8 : Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja mengikut negeri, Malaysia, 2010–2023 (samb.)", type text}, {"Column2", Int64.Type}, {"Column3", Int64.Type}, {"Column4", Int64.Type}, {"Column5", Int64.Type}, {"Column6", Int64.Type}, {"Column7", Int64.Type}, {"Column8", Int64.Type}, {"Column9", Int64.Type}, {"Column10", type number}, {"Column11", Int64.Type}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", Int64.Type}, {"Column16", type text}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}}),

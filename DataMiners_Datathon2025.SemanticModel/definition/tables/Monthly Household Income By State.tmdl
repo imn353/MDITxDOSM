@@ -47,7 +47,7 @@ table 'Monthly Household Income By State'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_income_state.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\hh_income_state.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"income_mean", Int64.Type}, {"income_median", Int64.Type}}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"state", "State"}, {"date", "Date"}, {"income_mean", "Mean Income (RM)"}, {"income_median", "Median Income (RM)"}})

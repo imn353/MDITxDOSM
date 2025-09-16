@@ -39,7 +39,7 @@ table 'Annual Household Income'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_income.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\hh_income.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"income_mean", Int64.Type}, {"income_median", Int64.Type}}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"date", "Date"}, {"income_mean", "Mean Income (RM)"}, {"income_median", "Median Income (RM)"}})
@@ -47,4 +47,6 @@ table 'Annual Household Income'
 				    #"Renamed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

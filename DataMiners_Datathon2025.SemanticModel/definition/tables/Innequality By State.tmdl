@@ -39,7 +39,7 @@ table 'Innequality By State'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_inequality_state.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\hh_inequality_state.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"gini", type number}}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"date", "Date"}, {"gini", "Gini"}, {"state", "State"}})
@@ -47,4 +47,6 @@ table 'Innequality By State'
 				    #"Renamed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

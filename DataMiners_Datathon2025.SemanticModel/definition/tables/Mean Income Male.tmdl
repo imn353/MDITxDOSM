@@ -1,0 +1,58 @@
+table 'Mean Income Male'
+	lineageTag: f8dee326-b1ec-469d-a9df-f19c87d965d9
+
+	column Year
+		dataType: string
+		lineageTag: 80a59e45-3b4e-4825-ad66-d39be0b79129
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mean Income (RM)'
+		dataType: double
+		lineageTag: 779a2e87-ba5f-44f0-b3c3-e1f7d2ad030a
+		summarizeBy: sum
+		sourceColumn: Mean Income (RM)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gender
+		dataType: string
+		lineageTag: 3a535c6b-19fb-4852-b38e-cb3e1733141c
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Mean Income Male' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\User\Desktop\Datathon\JADUAL PENERBITAN SURVEI GAJI & UPAH 2023.xlsx"), null, true),
+				    #"JADUAL A2 Umur Lelaki_Sheet" = Source{[Item="JADUAL A2 Umur Lelaki",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"JADUAL A2 Umur Lelaki_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"A2: Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja mengikut kumpulan umur dan jantina, Malaysia , 2010–2023", type text}, {"Column2", type number}, {"Column3", type number}, {"Column4", type number}, {"Column5", type number}, {"Column6", type number}, {"Column7", type number}, {"Column8", type number}, {"Column9", type number}, {"Column10", type number}, {"Column11", type number}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type number}, {"Column16", type text}, {"Column17", type any}, {"Column18", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"A2: Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja mengikut kumpulan umur dan jantina, Malaysia , 2010–2023", "Column17", "Column18"}),
+				    #"Removed Top Rows" = Table.Skip(#"Removed Columns",3),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Removed Top Rows",13),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Bottom Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"2010", type number}, {"2011", type number}, {"2012", type number}, {"2013", type number}, {"2014", type number}, {"2015", type number}, {"2016", type number}, {"2017", type number}, {"2018", type number}, {"2019", type number}, {"2020r", type number}, {"2021r", type number}, {"2022r", type number}, {"2023", type number}, {"Age group", type text}}),
+				    #"Removed Top Rows1" = Table.Skip(#"Changed Type1",22),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Removed Top Rows1", {"Age group"}, "Attribute", "Value"),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Unpivoted Other Columns",{"Age group"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"Attribute", "Year"}, {"Value", "Mean Income (RM)"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","2020r","2020",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2021r","2021",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","2022r","2022",Replacer.ReplaceText,{"Year"}),
+				    #"Added Custom" = Table.AddColumn(#"Replaced Value2", "Custom", each "Male"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Custom",{{"Custom", "Gender"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

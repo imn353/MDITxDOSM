@@ -1,0 +1,69 @@
+table 'Poverty By State'
+	lineageTag: 501cfcad-6422-4226-a909-5ac1c003d0c8
+
+	column state
+		dataType: string
+		lineageTag: 42a985e3-da4b-4365-b7e8-7f2de9b0bb93
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6eb2a805-609a-4b10-aa6e-3d4309222374
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 34d9d94a-0995-4929-b51d-997f33dc0951
+			defaultHierarchy: LocalDateTable_ba49d646-5b2e-4bd9-99f2-eaa7d08f4c8f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column poverty_absolute
+		dataType: double
+		lineageTag: a9354163-2be9-45c0-9577-4b8e96993e63
+		summarizeBy: none
+		sourceColumn: poverty_absolute
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column poverty_hardcore
+		dataType: double
+		lineageTag: 6814c026-b211-4325-ab5d-ca98ed6e3251
+		summarizeBy: none
+		sourceColumn: poverty_hardcore
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column poverty_relative
+		dataType: double
+		lineageTag: f726b48d-5787-4a71-8ce1-f096f1751be9
+		summarizeBy: none
+		sourceColumn: poverty_relative
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Poverty By State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_poverty_state.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"poverty_absolute", type number}, {"poverty_hardcore", type number}, {"poverty_relative", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,56 @@
+table 'Annual Inflation Rate'
+	lineageTag: d2f6c2ec-e233-461f-8f5e-924e6404d336
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 529fb3fd-2c1a-45d6-b09f-627d3b121311
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 7883985b-6c15-4ec8-8acd-b2ed9e53938f
+			defaultHierarchy: LocalDateTable_a5210143-d01a-4a73-b02d-0929e3427a26.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Rate
+		dataType: double
+		lineageTag: aab08b4d-733a-4585-a5e8-2ac82f06addd
+		summarizeBy: none
+		sourceColumn: Rate
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year = YEAR('Annual Inflation Rate'[Date])
+		dataType: string
+		lineageTag: 7d008c66-a63c-49a9-ab0d-74756d8961a5
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Annual Inflation Rate' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\cpi_2d_annual_inflation.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"division", type text}, {"inflation", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([division] = "overall")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"division"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"date", "Date"}, {"inflation", "Rate"}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Renamed Columns", each [Date] >= #date(2010, 1, 1) and [Date] < #date(2024, 1, 1))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

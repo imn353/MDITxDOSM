@@ -1,0 +1,50 @@
+table 'Innequality By State'
+	lineageTag: 2ec36684-b1c6-4fd6-a4e5-1e37bf179b3f
+
+	column State
+		dataType: string
+		lineageTag: d26c468d-41d4-4703-a586-ab6116849524
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d2ba4d97-e94f-4d6f-a7f0-44c5f7aa82b4
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 6be7be10-2290-4729-b7d1-87331b1e1f66
+			defaultHierarchy: LocalDateTable_0a0c6f4c-07be-4e23-8d4a-a5b199134bfd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Gini
+		dataType: double
+		lineageTag: 2ae4f42c-5491-4594-9812-9022524cb578
+		summarizeBy: none
+		sourceColumn: Gini
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Innequality By State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_inequality_state.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"gini", type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"date", "Date"}, {"gini", "Gini"}, {"state", "State"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,55 @@
+table 'Mean Income By Sector'
+	lineageTag: be0ebf76-4583-4817-9cc3-26b71b255784
+
+	column Sector
+		dataType: string
+		lineageTag: 0f496022-787c-4752-9ac3-0c979e6f6937
+		summarizeBy: none
+		sourceColumn: Sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 571066b1-f792-4252-8be1-91879cf3d73f
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mean Income (RM)'
+		dataType: double
+		lineageTag: f7695099-6066-4cb0-bb61-5b27a6762212
+		summarizeBy: sum
+		sourceColumn: Mean Income (RM)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Mean Income By Sector' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\User\Desktop\Datathon\JADUAL PENERBITAN SURVEI GAJI & UPAH 2023.xlsx"), null, true),
+				    #"JADUAL A15 Sektor Jumlah_Sheet" = Source{[Item="JADUAL A15 Sektor Jumlah",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"JADUAL A15 Sektor Jumlah_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"A15 : Bilangan penerima, median dan purata gaji & upah bulanan pekerja mengikut sektor, Malaysia, 2010–2023", type text}, {"Column2", type number}, {"Column3", type number}, {"Column4", type number}, {"Column5", type number}, {"Column6", type number}, {"Column7", type number}, {"Column8", type number}, {"Column9", type number}, {"Column10", type number}, {"Column11", type number}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type number}, {"Column16", type text}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"A15 : Bilangan penerima, median dan purata gaji & upah bulanan pekerja mengikut sektor, Malaysia, 2010–2023", "Column17", "Column18", "Column19"}),
+				    #"Removed Top Rows" = Table.Skip(#"Removed Columns",2),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"2010", type number}, {"2011", type number}, {"2012", type number}, {"2013", type number}, {"2014", type number}, {"2015", type number}, {"2016", type number}, {"2017", type number}, {"2018", type number}, {"2019", type number}, {"2020r", type number}, {"2021r", type number}, {"2022r", type number}, {"2023", type number}, {"Sector", type text}}),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Changed Type1",4),
+				    #"Removed Top Rows1" = Table.Skip(#"Removed Bottom Rows",13),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Removed Top Rows1", {"Sector"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Other Columns",{{"Attribute", "Year"}, {"Value", "Mean Income (RM)"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","2020r","2020",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2021r","2021",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","2022r","2022",Replacer.ReplaceText,{"Year"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

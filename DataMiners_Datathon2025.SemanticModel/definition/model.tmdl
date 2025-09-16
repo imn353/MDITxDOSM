@@ -1,0 +1,45 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-MY
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Annual Inflation Rate","Monthly CPI Index By State","Monthly Household Income By State","Monthly Inflation Rate By State","Innequality By State","Poverty By State","Annual CPI Index","Annual Household Income","Mean Income Overall","Mean Income Male","Mean Income By Highest Certificate","Mean Income By Strata","Mean Income By State","Mean Income By Sector","Mean Income Female","Mean Income By Gender"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.146.1254.0 (25.08)+791a7518fadc83da883d79322a2658aff57c8db3
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table DateTableTemplate_71c91634-1740-4f45-ba28-d76be45ab146
+ref table 'Annual Inflation Rate'
+ref table 'Monthly CPI Index By State'
+ref table LocalDateTable_5ca0cb0a-abeb-4822-b92f-08fc9dcf7d93
+ref table 'Monthly Household Income By State'
+ref table LocalDateTable_ceedf09b-deb8-4d24-953e-8ac065718f90
+ref table 'Monthly Inflation Rate By State'
+ref table LocalDateTable_fa6cb03a-e3cb-4215-b7f3-b8789aa6b2e9
+ref table 'Innequality By State'
+ref table LocalDateTable_0a0c6f4c-07be-4e23-8d4a-a5b199134bfd
+ref table 'Poverty By State'
+ref table LocalDateTable_ba49d646-5b2e-4bd9-99f2-eaa7d08f4c8f
+ref table 'Annual CPI Index'
+ref table 'Annual Household Income'
+ref table LocalDateTable_61888aa1-4d3f-4c76-811f-ec498813e935
+ref table LocalDateTable_572539d4-ba9b-4e88-9fbc-7ac9ca239742
+ref table LocalDateTable_a5210143-d01a-4a73-b02d-0929e3427a26
+ref table 'Annual Average Inflation By State'
+ref table 'Mean Income Overall'
+ref table 'Mean Income Male'
+ref table 'Mean Income By Highest Certificate'
+ref table 'Mean Income By Strata'
+ref table 'Mean Income By State'
+ref table 'Mean Income By Sector'
+ref table 'Mean Income Female'
+ref table 'Mean Income By Gender'
+
+ref cultureInfo en-US
+

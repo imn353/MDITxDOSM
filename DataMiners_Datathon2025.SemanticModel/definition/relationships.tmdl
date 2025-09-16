@@ -1,0 +1,84 @@
+relationship bec1576e-5c74-442c-9afa-45670d05a7a4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Monthly CPI Index By State'.Date
+	toColumn: LocalDateTable_5ca0cb0a-abeb-4822-b92f-08fc9dcf7d93.Date
+
+relationship b13577d1-ae98-4ede-8210-48fb8903fdf0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Monthly Household Income By State'.Date
+	toColumn: LocalDateTable_ceedf09b-deb8-4d24-953e-8ac065718f90.Date
+
+relationship 692bbb6c-a8d6-438f-acec-82406ae51f65
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Monthly Inflation Rate By State'.Date
+	toColumn: LocalDateTable_fa6cb03a-e3cb-4215-b7f3-b8789aa6b2e9.Date
+
+relationship 6be7be10-2290-4729-b7d1-87331b1e1f66
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Innequality By State'.Date
+	toColumn: LocalDateTable_0a0c6f4c-07be-4e23-8d4a-a5b199134bfd.Date
+
+relationship 34d9d94a-0995-4929-b51d-997f33dc0951
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Poverty By State'.date
+	toColumn: LocalDateTable_ba49d646-5b2e-4bd9-99f2-eaa7d08f4c8f.Date
+
+relationship 93aa14df-9dd0-4fdd-8e1d-97a508fc5f16
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Annual Household Income'.Date
+	toColumn: LocalDateTable_61888aa1-4d3f-4c76-811f-ec498813e935.Date
+
+relationship 325f9dd5-fadb-4c81-b630-28879717c1f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Annual CPI Index'.date
+	toColumn: LocalDateTable_572539d4-ba9b-4e88-9fbc-7ac9ca239742.Date
+
+relationship 7883985b-6c15-4ec8-8acd-b2ed9e53938f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Annual Inflation Rate'.Date
+	toColumn: LocalDateTable_a5210143-d01a-4a73-b02d-0929e3427a26.Date
+
+relationship AutoDetected_9b37e4e9-6677-4e72-aad0-9f9ea5a1375b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Mean Income Male'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_74a016b7-d67e-48bd-84d3-1708837ca104
+	fromColumn: 'Mean Income By Highest Certificate'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_6376a73f-ca28-467f-89e2-09ad3100399d
+	fromColumn: 'Mean Income By Strata'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_d3eb037b-b25a-4e6b-a8d5-054160768bb5
+	fromColumn: 'Mean Income By State'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_18d4319a-883d-433b-8754-f2453ff57aba
+	fromColumn: 'Mean Income By Sector'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_ecaa031c-742f-461d-bbc7-16a687c0df85
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Mean Income Female'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship AutoDetected_e510fe5e-10a6-4e27-9f94-6cde8287ed3e
+	fromColumn: 'Mean Income By Gender'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship ed9b8bc5-93f8-48eb-56a1-4501f25c3132
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Annual Inflation Rate'.Year
+	toColumn: 'Mean Income Overall'.Year
+
+relationship c947424e-5478-e186-02a5-b2c031b826e8
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Mean Income Overall'.Year
+	toColumn: 'Annual CPI Index'.Year
+

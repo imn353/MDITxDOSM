@@ -1,0 +1,72 @@
+table 'Monthly Inflation Rate By State'
+	lineageTag: 70406f9c-2576-4d0d-ba6a-4e4725188e30
+
+	column State
+		dataType: string
+		lineageTag: 1aac728f-605b-4a15-888e-7c75ecd4baf9
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5bd29e60-f0af-4a4b-98a5-0bb66ffe1a3d
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 692bbb6c-a8d6-438f-acec-82406ae51f65
+			defaultHierarchy: LocalDateTable_fa6cb03a-e3cb-4215-b7f3-b8789aa6b2e9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Inflation YoY'
+		dataType: double
+		lineageTag: 2c2b7aff-22fa-45be-b7a9-80d29ba702b2
+		summarizeBy: none
+		sourceColumn: Inflation YoY
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Inflation MoM'
+		dataType: double
+		lineageTag: c93073d7-6306-4ca3-8fd6-0be11809cccd
+		summarizeBy: none
+		sourceColumn: Inflation MoM
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year = YEAR ( 'Monthly Inflation Rate By State'[Date] )
+		dataType: string
+		lineageTag: 27f7d8d1-4959-43eb-bffb-4ca7433bb2a0
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Monthly Inflation Rate By State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\cpi_2d_monthly_state_inflation.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"division", type text}, {"inflation_yoy", type number}, {"inflation_mom", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"division"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"date", "Date"}, {"inflation_mom", "Inflation MoM"}, {"inflation_yoy", "Inflation YoY"}, {"state", "State"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

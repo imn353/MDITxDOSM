@@ -1,0 +1,60 @@
+table 'Monthly Household Income By State'
+	lineageTag: a557d08c-51c0-4632-896f-b5d01d67309d
+
+	column State
+		dataType: string
+		lineageTag: 92c396d1-5408-4a8b-bc3c-fa894f2dea12
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8163e2f8-c06a-4ee6-abf1-2c003ed3e4be
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: b13577d1-ae98-4ede-8210-48fb8903fdf0
+			defaultHierarchy: LocalDateTable_ceedf09b-deb8-4d24-953e-8ac065718f90.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Mean Income (RM)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7bc2fe5-c52c-465c-b01a-08777d221780
+		summarizeBy: none
+		sourceColumn: Mean Income (RM)
+
+		annotation SummarizationSetBy = User
+
+	column 'Median Income (RM)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 78d937d7-f132-4a23-af1a-099f8fc78b74
+		summarizeBy: none
+		sourceColumn: Median Income (RM)
+
+		annotation SummarizationSetBy = User
+
+	partition 'Monthly Household Income By State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\hh_income_state.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"income_mean", Int64.Type}, {"income_median", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"state", "State"}, {"date", "Date"}, {"income_mean", "Mean Income (RM)"}, {"income_median", "Median Income (RM)"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

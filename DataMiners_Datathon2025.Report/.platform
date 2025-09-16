@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "DataMiners_Datathon2025"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "62c3c7d8-982c-48ac-8280-df25c2db6ef7"
+  }
+}

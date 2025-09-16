@@ -1,0 +1,53 @@
+table 'Monthly CPI Index By State'
+	lineageTag: 875e7709-3365-4225-9fdb-d4444bedf50c
+
+	column State
+		dataType: string
+		lineageTag: 23193668-b64c-4bd3-bf08-fadc06de81b0
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2c7a20ac-45fe-4e01-879b-8faaac244977
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: bec1576e-5c74-442c-9afa-45670d05a7a4
+			defaultHierarchy: LocalDateTable_5ca0cb0a-abeb-4822-b92f-08fc9dcf7d93.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Index
+		dataType: double
+		lineageTag: 31099140-6710-4a9b-a915-89a90aafc75c
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Monthly CPI Index By State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\cpi_2d_monthly_state.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"state", type text}, {"date", type date}, {"division", type text}, {"index", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"division"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"state", "State"}, {"date", "Date"}, {"index", "Index"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,41 @@
+table 'Mean Income By Gender'
+	lineageTag: 71397231-83da-499e-8ec1-e7b75b71d3e0
+
+	column Year
+		dataType: string
+		lineageTag: d3afaa18-e858-4e0e-9ef8-0f2a877d7bfa
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mean Income (RM)'
+		dataType: double
+		lineageTag: 9c7a383e-b0c6-40da-94af-6cd3fef4eb85
+		summarizeBy: sum
+		sourceColumn: Mean Income (RM)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gender
+		dataType: string
+		lineageTag: aec18fc8-e9b5-42a5-b217-6447a66de0ea
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Mean Income By Gender' = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({#"Mean Income Female", #"Mean Income Male"})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

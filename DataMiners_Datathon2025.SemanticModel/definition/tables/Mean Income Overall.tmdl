@@ -1,0 +1,73 @@
+table 'Mean Income Overall'
+	lineageTag: 4a7d41dd-25be-4ce0-80f4-721afbb938a5
+
+	measure 'Wage Growth %' = ```
+			
+			VAR CurrentWage = SUM('Mean Income Overall'[Mean Income (RM)])
+			VAR PrevWage =
+			    CALCULATE(
+			        SUM('Mean Income Overall'[Mean Income (RM)]),
+			        FILTER(
+			            ALL('Mean Income Overall'),
+			            'Mean Income Overall'[Year] = MAX('Mean Income Overall'[Year]) - 1
+			        )
+			    )
+			RETURN
+			IF(NOT ISBLANK(PrevWage),
+			    DIVIDE(CurrentWage - PrevWage, PrevWage, 0) * 100,
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 62f8e8ef-8e78-4b72-b394-6a7e8eb25b81
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: afc7ff8c-9035-4e0e-84d3-e40bffcbd085
+		summarizeBy: none
+		sourceColumn: Year
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mean Income (RM)'
+		dataType: double
+		lineageTag: b5b4596d-0eb1-4423-97ef-272f81839ba2
+		summarizeBy: none
+		sourceColumn: Mean Income (RM)
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Mean Income Overall' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\User\Desktop\Datathon\JADUAL PENERBITAN SURVEI GAJI & UPAH 2023.xlsx"), null, true),
+				    #"JADUAL A1 Umur Jumlah_Sheet" = Source{[Item="JADUAL A1 Umur Jumlah",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"JADUAL A1 Umur Jumlah_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"A1: Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja mengikut kumpulan umur, Malaysia, 2010–2023", type text}, {"Column2", type number}, {"Column3", type number}, {"Column4", type number}, {"Column5", type number}, {"Column6", type number}, {"Column7", type number}, {"Column8", type number}, {"Column9", type number}, {"Column10", type number}, {"Column11", type number}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type number}, {"Column16", type text}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"A1: Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja mengikut kumpulan umur, Malaysia, 2010–2023", "Column17", "Column18", "Column19"}),
+				    #"Removed Top Rows" = Table.Skip(#"Removed Columns",2),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"2010", type number}, {"2011", type number}, {"2012", type number}, {"2013", type number}, {"2014", type number}, {"2015", type number}, {"2016", type number}, {"2017", type number}, {"2018", type number}, {"2019", type number}, {"2020r", type number}, {"2021r", type number}, {"2022r", type number}, {"2023", type number}, {"Age group", type text}}),
+				    #"Removed Top Rows1" = Table.Skip(#"Changed Type1",22),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Removed Top Rows1",12),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Removed Bottom Rows", {"Age group"}, "Attribute", "Value"),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Unpivoted Other Columns",{"Age group"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"Attribute", "Year"}, {"Value", "Mean Income (RM)"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","2020r","2020",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2021r","2021",Replacer.ReplaceText,{"Year"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","2022r","2022",Replacer.ReplaceText,{"Year"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

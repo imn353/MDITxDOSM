@@ -1,0 +1,57 @@
+table 'Annual CPI Index'
+	lineageTag: 42cd9383-39e6-4d86-af19-0517bfe05c70
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8c6e0877-2729-4f4d-b41a-67cc91c0203c
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 325f9dd5-fadb-4c81-b630-28879717c1f7
+			defaultHierarchy: LocalDateTable_572539d4-ba9b-4e88-9fbc-7ac9ca239742.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column index
+		dataType: double
+		lineageTag: b948c4a2-1f3d-4334-acd0-c1de209f02a5
+		summarizeBy: none
+		sourceColumn: index
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year = ```
+			YEAR('Annual CPI Index'[date]) 
+			```
+		dataType: string
+		lineageTag: 188f9b6e-1a61-4757-b5c5-f9b13119d094
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Annual CPI Index' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\Datathon\cpi_2d_annual.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"division", type text}, {"index", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([division] = "overall")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"division"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Removed Columns", each [date] >= #date(2010, 1, 1) and [date] <= #date(2023, 1, 1))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,21 @@
+DEFINE
+    MEASURE 'Mean Income Overall'[Wage Growth %] = VAR CurrentWage = SUM('Mean Income Overall'[Mean Income (RM)])
+VAR PrevWage =
+    CALCULATE(
+        SUM('Mean Income Overall'[Mean Income (RM)]),
+        FILTER(
+            ALL('Mean Income Overall'),
+            'Mean Income Overall'[Year] = MAX('Mean Income Overall'[Year]) - 1
+        )
+    )
+RETURN
+IF(NOT ISBLANK(PrevWage),
+    DIVIDE(CurrentWage - PrevWage, PrevWage, 0) * 100,
+    BLANK()
+)
+
+EVALUATE
+    SUMMARIZECOLUMNS(
+		'Mean Income Overall'[Year]
+        "Wage Growth %", [Wage Growth %]
+    )

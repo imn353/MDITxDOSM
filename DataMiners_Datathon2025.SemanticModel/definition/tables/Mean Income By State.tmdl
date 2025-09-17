@@ -1,6 +1,42 @@
 table 'Mean Income By State'
 	lineageTag: 8e795d35-a822-4030-83cc-5ff075e3ddc0
 
+	measure 'Wage Growth By State%' = ```
+			
+			VAR CurrentWage =
+			    SUM('Mean Income by State'[Mean Income (RM)])
+			VAR PrevWage =
+			    CALCULATE(
+			        SUM('Mean Income by State'[Mean Income (RM)]),
+			        FILTER(
+			            ALL('Mean Income by State'),
+			            'Mean Income by State'[State] = MAX('Mean Income by State'[State]) &&
+			            'Mean Income by State'[Year] = MAX('Mean Income by State'[Year]) - 1
+			        )
+			    )
+			RETURN
+			IF(
+			    NOT ISBLANK(PrevWage),
+			    DIVIDE(CurrentWage - PrevWage, PrevWage, 0) * 100,
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 64b0dd0b-4451-41f5-af40-b3e571658690
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Income State' =
+			
+			
+			var test = [Wage Growth By State%]
+			
+			RETURN
+			test
+		lineageTag: 5bba6946-b53c-407e-961d-109d11cd5220
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column State
 		dataType: string
 		lineageTag: d9144014-d08a-4a7b-9a6b-5283f7c983e6
@@ -10,10 +46,13 @@ table 'Mean Income By State'
 		annotation SummarizationSetBy = Automatic
 
 	column Year
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: fb69f514-edef-4d01-a0ff-d0f4e04584b7
 		summarizeBy: none
 		sourceColumn: Year
+
+		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
 

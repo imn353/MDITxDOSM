@@ -82,7 +82,7 @@ table 'Mean Income Overall'
 
 	measure 'Real Wage Index' = ```
 			
-			VAR BaseYear = 2015
+			VAR BaseYear = 2010
 			VAR BaseRealWage =
 			    CALCULATE(
 			        [Real Wage],

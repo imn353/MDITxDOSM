@@ -1,0 +1,70 @@
+table 'Annual CPI Index By Category'
+	lineageTag: 5b30377a-faba-457c-a6b0-840db3a84e73
+
+	measure 'Selected Category CPI' = ```
+			
+			SELECTEDVALUE ( 'Annual CPI Index By Category'[Index] )
+			
+			```
+		lineageTag: f61bd6cd-6d9e-42c6-ab81-e05376ca2b54
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aa3d47b8-4e7f-404c-aaae-b16b220b9e69
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 7b7e93e3-18d8-42b3-9a82-053740b5356a
+			defaultHierarchy: LocalDateTable_7d3ad3f5-0fed-4833-9b47-ba7617740f80.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Division
+		dataType: string
+		lineageTag: f7dec299-2669-4a8e-8a55-719f4f1644ef
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: double
+		lineageTag: 80984f77-3e0c-4709-889c-f726337da6c7
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year = YEAR('Annual CPI Index By Category'[Date])
+		formatString: 0
+		lineageTag: b8e9bf44-4493-4219-a33a-d06fc14ddc15
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Annual CPI Index By Category' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\cpi_2d_annual.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"division", type text}, {"index", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([division] <> "overall")),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"date", "Date"}, {"division", "Division"}, {"index", "Index"}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Renamed Columns", each [Date] >= #date(2010, 1, 1) and [Date] <= #date(2023, 1, 1))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

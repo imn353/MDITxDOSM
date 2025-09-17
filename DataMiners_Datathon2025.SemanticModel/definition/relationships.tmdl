@@ -94,3 +94,16 @@ relationship 967f60da-3196-64f1-5367-6b95894dd558
 	fromColumn: 'Annual Average CPI Index By State'.Key
 	toColumn: 'Mean Income By State'.Key
 
+relationship 7b7e93e3-18d8-42b3-9a82-053740b5356a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Annual CPI Index By Category'.Date
+	toColumn: LocalDateTable_7d3ad3f5-0fed-4833-9b47-ba7617740f80.Date
+
+relationship AutoDetected_21984472-915f-4393-8ad7-64982a0633fa
+	fromColumn: 'Annual CPI Index By Category'.Division
+	toColumn: mcoicop.Division
+
+relationship dd5871b6-26b4-e9a6-231b-024f99b6c847
+	fromColumn: 'Annual CPI Index By Category'.Year
+	toColumn: 'Mean Income Overall'.Year
+

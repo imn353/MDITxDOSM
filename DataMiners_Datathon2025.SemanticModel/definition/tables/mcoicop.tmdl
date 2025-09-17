@@ -1,0 +1,37 @@
+table mcoicop
+	lineageTag: 36781f64-7404-4b07-9a3c-155ea743633b
+
+	column Division
+		dataType: string
+		lineageTag: 8a1a201e-bf79-4cc6-9c5a-8c5f3645934f
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 698d90d3-e5d5-463a-82d6-d7851a72528b
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mcoicop = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\mcoicop.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"digits", Int64.Type}, {"division", type text}, {"group", type text}, {"class", type text}, {"subclass", type text}, {"desc_en", type text}, {"desc_bm", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"digits"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([group] = "-")),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"group", "class", "subclass", "desc_bm"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"desc_en", "Category"}, {"division", "Division"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

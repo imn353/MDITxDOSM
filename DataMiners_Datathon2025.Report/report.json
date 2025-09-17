@@ -19,7 +19,7 @@
   ],
   "sections": [
     {
-      "config": "{}",
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"182L\"}}}}}]},\"filterSortOrder\":3}",
       "displayName": "Page 2",
       "displayOption": 1,
       "filters": "[]",
@@ -28,49 +28,31 @@
       "ordinal": 1,
       "visualContainers": [
         {
-          "config": "{\"name\":\"0bb91605a177f944529a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":873.4594777407929,\"y\":360.17444240730526,\"z\":2000,\"width\":300.38840135993877,\"height\":298.9302052368323,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Annual Average Inflation By State.Average Inflation\"},{\"queryRef\":\"Annual Average Inflation By State.Year\"},{\"queryRef\":\"Annual Average Inflation By State.State\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Average Inflation\"},\"Name\":\"Annual Average Inflation By State.Average Inflation\",\"NativeReferenceName\":\"Average Inflation\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Year\"},\"Name\":\"Annual Average Inflation By State.Year\",\"NativeReferenceName\":\"Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"},\"Name\":\"Annual Average Inflation By State.State\",\"NativeReferenceName\":\"State\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"}}}]},\"drillFilterOtherVisuals\":true}}",
-          "filters": "[]",
-          "height": 298.93,
-          "width": 300.39,
-          "x": 873.46,
-          "y": 360.17,
-          "z": 2000.00
-        },
-        {
-          "config": "{\"name\":\"93c88f5fb1f8e1f24d3b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":24.181360201511332,\"z\":0,\"width\":817.329974811083,\"height\":280.50377833753146,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Annual Average Inflation By State.Year\",\"active\":true}],\"Y\":[{\"queryRef\":\"Avg(Annual Average Inflation By State.Annual Average Inflation)\"}],\"Y2\":[{\"queryRef\":\"Mean Income By State.Wage Growth By State%\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Year\"},\"Name\":\"Annual Average Inflation By State.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Annual Average Inflation\"}},\"Function\":1},\"Name\":\"Avg(Annual Average Inflation By State.Annual Average Inflation)\",\"NativeReferenceName\":\"Average of Annual Average Inflation\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Wage Growth By State%\"},\"Name\":\"Mean Income By State.Wage Growth By State%\",\"NativeReferenceName\":\"Wage Growth By State%\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
-          "filters": "[{\"name\":\"eb6dbe92890fab6dabc4\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2010'\"}}],[{\"Literal\":{\"Value\":\"'2024'\"}}],[{\"Literal\":{\"Value\":\"'2025'\"}}]]}}}}}]},\"type\":\"Exclude\",\"howCreated\":4,\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Annual Average Inflation By State\"}},\"Property\":\"Year\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Annual Average Inflation By State\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"'2025'\"}}}}}],\"valueMap\":{\"0\":\"2025\"}},{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Annual Average Inflation By State\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"'2024'\"}}}}}],\"valueMap\":{\"0\":\"2024\"}},{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Annual Average Inflation By State\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"'2010'\"}}}}}],\"valueMap\":{\"0\":\"2010\"}}]}}]",
-          "height": 280.50,
-          "width": 817.33,
+          "config": "{\"name\":\"93c88f5fb1f8e1f24d3b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":20.057538103691005,\"z\":0,\"width\":885.8745995796861,\"height\":282.476994960315,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Mean Income By State.Year\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Annual Average CPI Index By State.Annual Average CPI Index)\"}],\"Y2\":[{\"queryRef\":\"Mean Income By State.Real Wage Index State\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0},{\"Name\":\"a\",\"Entity\":\"Annual Average CPI Index By State\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Year\"},\"Name\":\"Mean Income By State.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Annual Average CPI Index\"}},\"Function\":1},\"Name\":\"CountNonNull(Annual Average CPI Index By State.Annual Average CPI Index)\",\"NativeReferenceName\":\"Average of Annual Average CPI Index\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Real Wage Index State\"},\"Name\":\"Mean Income By State.Real Wage Index State\",\"NativeReferenceName\":\"Real Wage Index State\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Annual Average CPI Index\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"88360ba8c0bb711d2e6d\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"2010L\"}}]]}}}}}]},\"type\":\"Exclude\",\"howCreated\":4,\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Mean Income By State\"}},\"Property\":\"Year\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Mean Income By State\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"2010L\"}}}}}],\"valueMap\":{\"0\":\"2010\"}}]}}]",
+          "height": 282.48,
+          "width": 885.87,
           "x": 0.00,
-          "y": 24.18,
+          "y": 20.06,
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"98e45b266525e7435bf8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":303.2600211058812,\"z\":1000,\"width\":817.8415048828289,\"height\":177.01603041927,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"advancedSlicerVisual\",\"projections\":{\"Values\":[{\"queryRef\":\"Annual Average Inflation By State.State\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"},\"Name\":\"Annual Average Inflation By State.State\",\"NativeReferenceName\":\"State\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{}}]}}}",
+          "config": "{\"name\":\"98e45b266525e7435bf8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":302.53453306400604,\"z\":1000,\"width\":885.8745995796861,\"height\":177.17491991593724,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"advancedSlicerVisual\",\"projections\":{\"Values\":[{\"queryRef\":\"Annual Average Inflation By State.State\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"},\"Name\":\"Annual Average Inflation By State.State\",\"NativeReferenceName\":\"State\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Perlis'\"}}]]}}}]}}}}],\"selection\":[{\"properties\":{\"strictSingleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
           "filters": "[{\"name\":\"0841795378443f41b1bc\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Annual Average Inflation By State\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"State\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Exclude\",\"howCreated\":4}]",
-          "height": 177.02,
-          "width": 817.84,
+          "height": 177.17,
+          "width": 885.87,
           "x": 0.00,
-          "y": 303.26,
+          "y": 302.53,
           "z": 1000.00
         },
         {
-          "config": "{\"name\":\"e1284d795c89e5f5823a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":873.7531486146095,\"y\":77.38035264483626,\"z\":3000,\"width\":299.8488664987405,\"height\":282.11586901763224,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Mean Income By State.Mean Income (RM)\"},{\"queryRef\":\"Mean Income By State.State\"},{\"queryRef\":\"Mean Income By State.Year\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Mean Income (RM)\"}},\"Function\":0},\"Name\":\"Mean Income By State.Mean Income (RM)\",\"NativeReferenceName\":\"Sum of Mean Income (RM)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"State\"},\"Name\":\"Mean Income By State.State\",\"NativeReferenceName\":\"State\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Year\"},\"Name\":\"Mean Income By State.Year\",\"NativeReferenceName\":\"Year\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Mean Income (RM)\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"ae5929209a2141d330ce\",\"layouts\":[{\"id\":0,\"position\":{\"x\":924.3182142784273,\"y\":78.5586909061231,\"z\":4000,\"width\":197.23245801962824,\"height\":401.15076207382015,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Mean Income By State.Real Wage Index State\"},{\"queryRef\":\"Mean Income By State.Year\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Real Wage Index State\"},\"Name\":\"Mean Income By State.Real Wage Index State\",\"NativeReferenceName\":\"Real Wage Index State\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Year\"},\"Name\":\"Mean Income By State.Year\",\"NativeReferenceName\":\"Year\"}]},\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
-          "height": 282.12,
-          "width": 299.85,
-          "x": 873.75,
-          "y": 77.38,
-          "z": 3000.00
-        },
-        {
-          "config": "{\"name\":\"f217578e41dbe0d1c2a8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":592.0276259812385,\"y\":479.74652450203814,\"z\":3001,\"width\":226.02039908150735,\"height\":179.35812314209937,\"tabOrder\":3001}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Mean Income By State.Average Income State\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Mean Income By State\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Average Income State\"},\"Name\":\"Mean Income By State.Average Income State\",\"NativeReferenceName\":\"Average Income State\"}]},\"drillFilterOtherVisuals\":true}}",
-          "filters": "[]",
-          "height": 179.36,
-          "width": 226.02,
-          "x": 592.03,
-          "y": 479.75,
-          "z": 3001.00
+          "height": 401.15,
+          "width": 197.23,
+          "x": 924.32,
+          "y": 78.56,
+          "z": 4000.00
         }
       ],
       "width": 1280.00

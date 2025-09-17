@@ -88,3 +88,9 @@ relationship ec44cc5f-cf36-9c3c-d395-cf6b60e4e8d9
 	fromColumn: 'Annual Average Inflation By State'.Key
 	toColumn: 'Mean Income By State'.Key
 
+relationship 967f60da-3196-64f1-5367-6b95894dd558
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Annual Average CPI Index By State'.Key
+	toColumn: 'Mean Income By State'.Key
+

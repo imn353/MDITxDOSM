@@ -26,14 +26,31 @@ table 'Mean Income By State'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Average Income State' =
+	measure 'Real Wage By State' = ```
 			
+			DIVIDE(
+			    SUM('Mean Income by State'[Mean Income (RM)]),
+			    DIVIDE(MAX('Annual Average CPI Index By State'[Annual Average CPI Index]), 100)  -- deflate using CPI index
+			)
 			
-			var test = [Wage Growth By State%]
+			```
+		lineageTag: ab50dd93-00d4-4a9a-8cf9-46fd97b33ed1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Real Wage Index State' = ```
 			
+			VAR BaseRW =
+			    CALCULATE(
+			        [Real Wage By State],
+			        REMOVEFILTERS('Mean Income by State'[Year]),   -- ignore Year filter
+			        'Mean Income by State'[Year] = 2010            -- force base year = 2011
+			    )
 			RETURN
-			test
-		lineageTag: 5bba6946-b53c-407e-961d-109d11cd5220
+			DIVIDE([Real Wage By State], BaseRW) * 100
+			
+			```
+		lineageTag: c327af73-b1ae-4df5-ade0-aa326f18cc31
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -67,8 +84,11 @@ table 'Mean Income By State'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Key = 'Mean Income By State'[State] & "-" & [Year]
+		isHidden
 		lineageTag: 7491b486-ba40-4dd8-a093-687749dbc64b
 		summarizeBy: none
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

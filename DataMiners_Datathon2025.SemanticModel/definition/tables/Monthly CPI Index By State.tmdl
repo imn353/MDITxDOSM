@@ -35,6 +35,13 @@ table 'Monthly CPI Index By State'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Year = YEAR('Monthly CPI Index By State'[Date])
+		formatString: 0
+		lineageTag: c13b5fb0-7adb-4c99-8743-4975d4f33038
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
 	partition 'Monthly CPI Index By State' = m
 		mode: import
 		source =

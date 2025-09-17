@@ -1,0 +1,53 @@
+table 'Annual Average CPI Index By State'
+	lineageTag: 60ea5383-05df-4264-80bd-b532bfced402
+
+	column State
+		lineageTag: 5513e9a5-c326-4ff7-b3b1-96afaa1c4a5b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Monthly CPI Index By State[State]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 8720f0ec-c989-49e3-a59a-b5f906365f7d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Monthly CPI Index By State[Year]
+
+		annotation SummarizationSetBy = User
+
+	column 'Annual Average CPI Index'
+		lineageTag: e952ff42-fadd-46b9-8376-c0fdda7c4c88
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Annual Average CPI Index]
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Key = [State] & "-" & [Year]
+		isHidden
+		lineageTag: ad71b8ed-724b-4327-ae51-69710758abfa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Annual Average CPI Index By State' = calculated
+		mode: import
+		source = ```
+				
+				SUMMARIZE (
+				    'Monthly CPI Index By State',
+				    'Monthly CPI Index By State'[State],
+				    'Monthly CPI Index By State'[Year],
+				    "Annual Average CPI Index",
+				        AVERAGE ('Monthly CPI Index By State'[Index])
+				)
+				
+				```
+
+	annotation PBI_Id = 13fee55794eb497591ef6f313da22742
+

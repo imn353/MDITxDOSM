@@ -40,6 +40,7 @@ ref table 'Mean Income By State'
 ref table 'Mean Income By Sector'
 ref table 'Mean Income Female'
 ref table 'Mean Income By Gender'
+ref table 'Annual Average CPI Index By State'
 
 ref cultureInfo en-US
 

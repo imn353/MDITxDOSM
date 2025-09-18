@@ -35,6 +35,22 @@ table 'Innequality By State'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Year = YEAR('Innequality By State'[Date])
+		formatString: 0
+		lineageTag: e4bd0744-4ee4-473b-afec-f8aec0bdc60f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key = 'Innequality By State'[State] & "-" & 'Innequality By State'[Year]
+		isHidden
+		lineageTag: 099638d7-d788-4705-bada-979039ba6c65
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Innequality By State' = m
 		mode: import
 		source =

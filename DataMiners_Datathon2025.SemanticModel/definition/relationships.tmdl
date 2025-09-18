@@ -107,3 +107,9 @@ relationship dd5871b6-26b4-e9a6-231b-024f99b6c847
 	fromColumn: 'Annual CPI Index By Category'.Year
 	toColumn: 'Mean Income Overall'.Year
 
+relationship 436fd315-26fc-6d9c-42b4-7a7a6fe47394
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Innequality By State'.Key
+	toColumn: 'Mean Income By State'.Key
+

@@ -54,6 +54,25 @@ table 'Mean Income By State'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Wage Index By State' = ```
+			
+			VAR BaseYear = 2010
+			VAR BaseWage =
+			    CALCULATE(
+			        AVERAGE('Mean Income By State'[Mean Income (RM)]),
+			        'Mean Income By State'[Year] = BaseYear
+			    )
+			RETURN
+			    DIVIDE(
+			        AVERAGE('Mean Income By State'[Mean Income (RM)]),
+			        BaseWage
+			    ) * 100
+			
+			```
+		lineageTag: e3c96f0b-1c9c-4781-ab7a-421312f5153d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column State
 		dataType: string
 		lineageTag: d9144014-d08a-4a7b-9a6b-5283f7c983e6

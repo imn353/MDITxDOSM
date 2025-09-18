@@ -118,3 +118,14 @@ relationship 79a931e8-7d78-417e-bd19-1cdcb9b13aba
 	fromColumn: 'Economic Indicator'.Date
 	toColumn: LocalDateTable_7fb86b8f-9432-47ad-b85d-aae6d88b050b.Date
 
+relationship 0b1047ab-aa86-417a-863d-89770635034b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Labor Force Statistics'.date
+	toColumn: LocalDateTable_85b6574c-bbda-4fcd-ac92-a9d45c3abae6.Date
+
+relationship AutoDetected_6a4f2f98-9621-4810-88d5-52b25aa1f46e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Economic Indicator'.lf
+	toColumn: 'Labor Force Statistics'.lf
+

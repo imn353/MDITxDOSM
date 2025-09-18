@@ -1,6 +1,22 @@
 table 'Economic Indicator'
 	lineageTag: ee132f17-c12d-4094-839f-48db40001f70
 
+	measure 'Index Deviation' =
+			
+			VAR LatestValue =
+			    -- Get the value for the most recent date in the data
+			    LASTNONBLANKVALUE(
+			        'Economic Indicator'[Date],
+			        SUM('Economic Indicator'[economic_indicator_index_norm])
+			    )
+			VAR Baseline = 100
+			RETURN
+			    -- Calculate the absolute distance from the baseline
+			    IF(NOT ISBLANK(LatestValue), ABS(LatestValue - Baseline), 0)
+		lineageTag: dd6a82c3-510c-4f15-857b-27a1ad955575
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column inflation
 		dataType: double
 		lineageTag: c7cb18ec-c5f0-4fb6-8588-fd3f1e582744
@@ -34,7 +50,7 @@ table 'Economic Indicator'
 	column lf
 		dataType: double
 		lineageTag: 33ef6698-0891-42f1-8f8f-9836622122f5
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: lf
 
 		annotation SummarizationSetBy = Automatic

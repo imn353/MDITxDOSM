@@ -1,0 +1,103 @@
+table 'Labor Force Statistics'
+	lineageTag: b151b26e-ad4d-4bfb-a0a8-ec6f96b4a7ae
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 386f0d56-d63d-4df8-a1e7-c99bcd72e834
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 0b1047ab-aa86-417a-863d-89770635034b
+			defaultHierarchy: LocalDateTable_85b6574c-bbda-4fcd-ac92-a9d45c3abae6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column lf
+		dataType: double
+		lineageTag: 9fef023c-96b4-46f2-8409-492bb0a4dc57
+		summarizeBy: none
+		sourceColumn: lf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lf_employed
+		dataType: double
+		lineageTag: ae839b2e-bd29-446b-9789-095d205fcbf3
+		summarizeBy: sum
+		sourceColumn: lf_employed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lf_unemployed
+		dataType: double
+		lineageTag: 23fd6da2-c9c5-47db-9d8b-b119dc14f46c
+		summarizeBy: sum
+		sourceColumn: lf_unemployed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lf_outside
+		dataType: double
+		lineageTag: 487b0099-4d5a-42f7-8205-f6a046f363d0
+		summarizeBy: sum
+		sourceColumn: lf_outside
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column p_rate
+		dataType: double
+		lineageTag: b619b598-bd57-45a0-81de-b612141da4d1
+		summarizeBy: sum
+		sourceColumn: p_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ep_ratio
+		dataType: double
+		lineageTag: 8bba1887-99af-4305-8f61-a1c39f775fae
+		summarizeBy: sum
+		sourceColumn: ep_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column u_rate
+		dataType: double
+		lineageTag: 9855de1e-8f56-4592-9ae3-90c66431f3d0
+		summarizeBy: sum
+		sourceColumn: u_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Labor Force Statistics' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\lfs_month (6).csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"lf", type number}, {"lf_employed", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"p_rate", type number}, {"ep_ratio", type number}, {"u_rate", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

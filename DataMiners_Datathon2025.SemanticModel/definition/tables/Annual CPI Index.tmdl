@@ -30,7 +30,8 @@ table 'Annual CPI Index'
 	column Year = ```
 			YEAR('Annual CPI Index'[date]) 
 			```
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 188f9b6e-1a61-4757-b5c5-f9b13119d094
 		summarizeBy: none
 

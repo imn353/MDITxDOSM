@@ -1,31 +1,6 @@
 table 'Economic Indicator'
 	lineageTag: 8f84cfab-6b09-4312-aab4-394363cac023
 
-	column Column1
-		dataType: int64
-		formatString: 0
-		lineageTag: 821fa189-dd07-4ca0-b625-f9cdf9945a5b
-		summarizeBy: sum
-		sourceColumn: Column1
-
-		annotation SummarizationSetBy = Automatic
-
-	column date
-		dataType: dateTime
-		formatString: Long Date
-		lineageTag: cc56fc32-a4b6-410a-961f-6726a26f320f
-		summarizeBy: none
-		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: bc0964c4-89e5-47e5-b816-3523d0701464
-			defaultHierarchy: LocalDateTable_7de4949d-e5c1-4c7b-8532-4e55fb93100b.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
 	column inflation
 		dataType: double
 		lineageTag: 179ffee8-d754-47a2-8c17-406f5a970c81
@@ -116,15 +91,138 @@ table 'Economic Indicator'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column inflation_lag1
+		dataType: double
+		lineageTag: 0be26fa3-e6d8-432d-8751-8aff56d6e2cf
+		summarizeBy: sum
+		sourceColumn: inflation_lag1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inflation_lag2
+		dataType: double
+		lineageTag: deabf10f-5e3e-4026-8036-eb037ec1e265
+		summarizeBy: sum
+		sourceColumn: inflation_lag2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inflation_lag3
+		dataType: double
+		lineageTag: 160f6353-8cff-415c-9e95-dae17163e554
+		summarizeBy: sum
+		sourceColumn: inflation_lag3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inflation_lag4
+		dataType: double
+		lineageTag: 69866684-d37d-4cff-8ef1-079b0ee4a8b0
+		summarizeBy: sum
+		sourceColumn: inflation_lag4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inflation_lag5
+		dataType: double
+		lineageTag: 57493ae0-cb48-4655-ade8-c716e06b02e2
+		summarizeBy: sum
+		sourceColumn: inflation_lag5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inflation_lag6
+		dataType: double
+		lineageTag: 8272e439-d39b-4f66-b0e6-4a64b0600c74
+		summarizeBy: sum
+		sourceColumn: inflation_lag6
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column time_index
+		dataType: int64
+		formatString: 0
+		lineageTag: 535bc88e-d4b2-4de2-a3e6-08c05c3ea468
+		summarizeBy: sum
+		sourceColumn: time_index
+
+		annotation SummarizationSetBy = Automatic
+
+	column ppi_ma3
+		dataType: double
+		lineageTag: 8aed7661-94ad-4fe0-b2c1-4f7e1581ac0c
+		summarizeBy: sum
+		sourceColumn: ppi_ma3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column u_rate_ma3
+		dataType: double
+		lineageTag: 87b7f58d-395c-42ed-a1e2-4ebc6261f550
+		summarizeBy: sum
+		sourceColumn: u_rate_ma3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column economic_indicator_index
+		dataType: double
+		lineageTag: 798e877b-0e34-4ec9-b898-1e9bd97cf805
+		summarizeBy: sum
+		sourceColumn: economic_indicator_index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column economic_indicator_index_norm
+		dataType: double
+		lineageTag: 1a129dab-7732-4640-9f29-71ae239f15b9
+		summarizeBy: sum
+		sourceColumn: economic_indicator_index_norm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_forecasted
+		dataType: int64
+		formatString: 0
+		lineageTag: b5d28ab7-4e8b-44e5-8ec5-33c3e4a795d3
+		summarizeBy: sum
+		sourceColumn: is_forecasted
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Economic Indicator' = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(File.Contents("C:\Users\user\Personal-Projects\mditxdd_datathon\economic_indicator_table.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"date", type date}, {"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"date", type date}, {"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"date", ""}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}}),
+				    #"Run Python script" = Python.Execute("import pandas as pd#(lf)import numpy as np#(lf)from catboost import CatBoostRegressor, Pool#(lf)from sklearn.preprocessing import StandardScaler#(lf)from sklearn.decomposition import PCA#(lf)from statsmodels.tsa.holtwinters import ExponentialSmoothing#(lf)from statsmodels.tsa.arima.model import ARIMA#(lf)#(lf)# ===========================================#(lf)# POWER BI: dataset is passed automatically#(lf)# ===========================================#(lf)# Ensure Power BI query provides at least:#(lf)# 'inflation_mom', 'ppi_mom', 'lf', 'p_rate', 'u_rate',#(lf)# 'lf_unemployed', 'lf_outside', 'ep_ratio'#(lf)#(lf)combined = dataset.copy()#(lf)#(lf)# FIX: Convert potential non-numeric columns to numbers.#(lf)numeric_cols = [#(lf)    'inflation', 'ppi', 'cpi', 'lf', 'p_rate', 'u_rate',#(lf)    'lf_unemployed', 'lf_outside', 'ep_ratio'#(lf)]#(lf)for col in numeric_cols:#(lf)    if col in combined.columns:#(lf)        combined[col] = pd.to_numeric(combined[col], errors='coerce')#(lf)#(lf)# Clean dataset#(lf)combined = combined.dropna().drop_duplicates().reset_index(drop=True)#(lf)#(lf)# ==============================#(lf)# FEATURE ENGINEERING (no date)#(lf)# ==============================#(lf)for lag in range(1, 7):#(lf)    combined[f'inflation_lag{lag}'] = combined['inflation'].shift(lag)#(lf)#(lf)combined['time_index'] = np.arange(len(combined))#(lf)combined['ppi_ma3'] = combined['ppi'].rolling(window=3, min_periods=1).mean()#(lf)combined['u_rate_ma3'] = combined['u_rate'].rolling(window=3, min_periods=1).mean()#(lf)combined = combined.dropna().reset_index(drop=True)#(lf)#(lf)# ==============================#(lf)# PCA INDEX BUILDING (Min-Max Scaling + Baseline 100)#(lf)# ==============================#(lf)index_features = ['inflation', 'ppi', 'cpi', 'lf', 'p_rate', 'u_rate']#(lf)index_scaler = StandardScaler()#(lf)index_scaled = index_scaler.fit_transform(combined[index_features])#(lf)#(lf)pca = PCA(n_components=1)#(lf)economic_index_pca = pca.fit_transform(index_scaled)#(lf)#(lf)# Min-Max Scaling to 0–1#(lf)economic_index_min = economic_index_pca.min()#(lf)economic_index_max = economic_index_pca.max()#(lf)economic_index_scaled = (economic_index_pca - economic_index_min) / (economic_index_max - economic_index_min)#(lf)#(lf)combined['economic_indicator_index'] = economic_index_scaled#(lf)# Shift to baseline 100 (min = 100, max = 200)#(lf)combined['economic_indicator_index_norm'] = 100 + (economic_index_scaled * 100)#(lf)#(lf)# ==============================#(lf)# TRAIN MODEL (CatBoost)#(lf)# ==============================#(lf)model_data = combined.drop(#(lf)    ['economic_indicator_index', 'economic_indicator_index_norm'],#(lf)    axis=1, errors='ignore'#(lf))#(lf)#(lf)X = model_data.drop(['inflation'], axis=1)#(lf)y = model_data['inflation']#(lf)#(lf)model = CatBoostRegressor(verbose=0, random_seed=42, iterations=500)#(lf)model.fit(X, y)#(lf)#(lf)# ==============================#(lf)# FORECAST NEXT 60 PERIODS#(lf)# ==============================#(lf)future_data = model_data.iloc[-1:].copy()#(lf)future_predictions = []#(lf)future_rows = []#(lf)#(lf)last_time_index = combined['time_index'].iloc[-1]#(lf)#(lf)# Helper function for forecasting independent variables#(lf)def forecast_variable_simple(series, n_periods=60):#(lf)    try:#(lf)        model = ExponentialSmoothing(series, trend='add', seasonal=None)#(lf)        fitted = model.fit()#(lf)        forecast = fitted.forecast(steps=n_periods)#(lf)    except:#(lf)        x = np.arange(len(series))#(lf)        z = np.polyfit(x, series, 1)#(lf)        p = np.poly1d(z)#(lf)        forecast_x = np.arange(len(series), len(series) + n_periods)#(lf)        forecast = p(forecast_x)#(lf)    return forecast#(lf)#(lf)cpi_forecast = forecast_variable_simple(combined['cpi'].values, 60)#(lf)ppi_forecast = forecast_variable_simple(combined['ppi'].values, 60)#(lf)lf_forecast = forecast_variable_simple(combined['lf'].values, 60)#(lf)p_rate_forecast = forecast_variable_simple(combined['p_rate'].values, 60)#(lf)u_rate_forecast = forecast_variable_simple(combined['u_rate'].values, 60)#(lf)lf_unemployed_forecast = forecast_variable_simple(combined['lf_unemployed'].values, 60)#(lf)lf_outside_forecast = forecast_variable_simple(combined['lf_outside'].values, 60)#(lf)ep_ratio_forecast = forecast_variable_simple(combined['ep_ratio'].values, 60)#(lf)#(lf)for i in range(60):#(lf)    current_time_index = last_time_index + i + 1#(lf)#(lf)    future_data['time_index'] = current_time_index#(lf)    future_data['ppi'] = ppi_forecast[i]#(lf)    future_data['lf'] = lf_forecast[i]#(lf)    future_data['p_rate'] = p_rate_forecast[i]#(lf)    future_data['u_rate'] = u_rate_forecast[i]#(lf)    future_data['lf_unemployed'] = lf_unemployed_forecast[i]#(lf)    future_data['lf_outside'] = lf_outside_forecast[i]#(lf)    future_data['ep_ratio'] = ep_ratio_forecast[i]#(lf)#(lf)    if i >= 2:#(lf)        future_data['ppi_ma3'] = np.mean(ppi_forecast[i-2:i+1])#(lf)        future_data['u_rate_ma3'] = np.mean(u_rate_forecast[i-2:i+1])#(lf)    else:#(lf)        future_data['ppi_ma3'] = np.mean(ppi_forecast[:i+1])#(lf)        future_data['u_rate_ma3'] = np.mean(u_rate_forecast[:i+1])#(lf)#(lf)    X_future = future_data[X.columns]#(lf)    predicted_inflation = model.predict(X_future)[0]#(lf)#(lf)    noise = np.random.normal(0, 0.02, 1)[0]#(lf)    predicted_inflation += noise#(lf)#(lf)    future_predictions.append(predicted_inflation)#(lf)#(lf)    for lag in range(6, 1, -1):#(lf)        future_data[f'inflation_lag{lag}'] = future_data[f'inflation_lag{lag-1}']#(lf)    future_data['inflation_lag1'] = predicted_inflation#(lf)#(lf)    future_rows.append(future_data.copy())#(lf)#(lf)future_df = pd.concat(future_rows, ignore_index=True)#(lf)#(lf)# Recompute PCA index for forecasted period (using training scaler & PCA)#(lf)future_index_df = pd.DataFrame({#(lf)    'inflation': future_predictions,#(lf)    'ppi': ppi_forecast,#(lf)    'cpi': cpi_forecast,#(lf)    'lf': lf_forecast,#(lf)    'p_rate': p_rate_forecast,#(lf)    'u_rate': u_rate_forecast,#(lf)})#(lf)future_index_scaled = index_scaler.transform(future_index_df)#(lf)future_index = pca.transform(future_index_scaled)#(lf)#(lf)# Apply same min-max scaling as training set + shift to baseline 100#(lf)future_index_scaled = (future_index - economic_index_min) / (economic_index_max - economic_index_min)#(lf)future_index_norm = 100 + (future_index_scaled * 100)#(lf)#(lf)future_df['inflation'] = future_predictions#(lf)future_df['economic_indicator_index'] = future_index_scaled#(lf)future_df['economic_indicator_index_norm'] = future_index_norm#(lf)future_df['is_forecasted'] = 1#(lf)#(lf)combined['is_forecasted'] = 0#(lf)final_df = pd.concat([combined, future_df], ignore_index=True)#(lf)#(lf)# Return final dataset to Power BI#(lf)result = final_df[final_df['is_forecasted'] == 0]",[dataset=#"Changed Type1"]),
+				    result = #"Run Python script"{[Name="result"]}[Value],
+				    #"Changed Type2" = Table.TransformColumnTypes(result,{{"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}, {"inflation_lag1", type number}, {"inflation_lag2", type number}, {"inflation_lag3", type number}, {"inflation_lag4", type number}, {"inflation_lag5", type number}, {"inflation_lag6", type number}, {"time_index", Int64.Type}, {"ppi_ma3", type number}, {"u_rate_ma3", type number}, {"economic_indicator_index", type number}, {"economic_indicator_index_norm", type number}, {"is_forecasted", Int64.Type}})
 				in
-				    #"Changed Type"
+				    #"Changed Type2"
 
 	annotation PBI_NavigationStepName = Navigation
 

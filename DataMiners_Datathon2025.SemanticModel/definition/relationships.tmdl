@@ -113,3 +113,8 @@ relationship 436fd315-26fc-6d9c-42b4-7a7a6fe47394
 	fromColumn: 'Innequality By State'.Key
 	toColumn: 'Mean Income By State'.Key
 
+relationship 5229cf7f-f858-4294-a101-17f9b7867f4f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Economic Indicator Index'.Date
+	toColumn: LocalDateTable_618f2da9-f8c8-4b0c-8587-287fece73b90.Date
+

@@ -97,17 +97,7 @@
       "height": 720.00,
       "name": "27dec1656d211e349138",
       "ordinal": 2,
-      "visualContainers": [
-        {
-          "config": "{\"name\":\"b6200ecf83783173c681\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.605521030503024,\"y\":0,\"z\":0,\"width\":1037.3962712943267,\"height\":359.52092999882746,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Year\",\"active\":true},{\"queryRef\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Quarter\"},{\"queryRef\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Month\"},{\"queryRef\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Day\"}],\"Y2\":[{\"queryRef\":\"Sum(Economic Indicator Index.economic_indicator_index_norm)\"}],\"Y\":[{\"queryRef\":\"Sum(Economic Indicator Index.inflation)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"e\",\"Entity\":\"Economic Indicator Index\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"Date Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Date Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Name\":\"Variation\",\"Property\":\"Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"Economic Indicator Index.Date.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"Date Day\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Property\":\"economic_indicator_index_norm\"}},\"Function\":0},\"Name\":\"Sum(Economic Indicator Index.economic_indicator_index_norm)\",\"NativeReferenceName\":\"Sum of economic_indicator_index_norm\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"e\"}},\"Property\":\"inflation\"}},\"Function\":0},\"Name\":\"Sum(Economic Indicator Index.inflation)\",\"NativeReferenceName\":\"Sum of inflation\"}]},\"drillFilterOtherVisuals\":true}}",
-          "filters": "[]",
-          "height": 359.52,
-          "width": 1037.40,
-          "x": 9.61,
-          "y": 0.00,
-          "z": 0.00
-        }
-      ],
+      "visualContainers": [],
       "width": 1280.00
     },
     {

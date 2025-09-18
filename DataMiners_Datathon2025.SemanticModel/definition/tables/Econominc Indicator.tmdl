@@ -1,9 +1,9 @@
-table 'Economic Indicator Index'
-	lineageTag: af9a0689-764a-41a8-85d3-5c73f04e02dd
+table 'Econominc Indicator'
+	lineageTag: ee132f17-c12d-4094-839f-48db40001f70
 
 	column inflation
 		dataType: double
-		lineageTag: 47462a23-6a0f-4c46-af4d-1c3b72c23fd7
+		lineageTag: c7cb18ec-c5f0-4fb6-8588-fd3f1e582744
 		summarizeBy: sum
 		sourceColumn: inflation
 
@@ -13,7 +13,7 @@ table 'Economic Indicator Index'
 
 	column ppi
 		dataType: double
-		lineageTag: e9305394-6376-4670-8117-2fdaac6c18ec
+		lineageTag: 59dc0113-5aef-4f6a-8733-6ce0eaf043cd
 		summarizeBy: sum
 		sourceColumn: ppi
 
@@ -23,7 +23,7 @@ table 'Economic Indicator Index'
 
 	column cpi
 		dataType: double
-		lineageTag: d3b2c9ac-c579-4d42-adb7-f956008f2861
+		lineageTag: dde1549b-3024-47cd-b6f5-a2df215503c8
 		summarizeBy: sum
 		sourceColumn: cpi
 
@@ -33,7 +33,7 @@ table 'Economic Indicator Index'
 
 	column lf
 		dataType: double
-		lineageTag: 8a93f40c-585a-4467-a3ab-e0acb90f0d5e
+		lineageTag: 33ef6698-0891-42f1-8f8f-9836622122f5
 		summarizeBy: sum
 		sourceColumn: lf
 
@@ -41,21 +41,21 @@ table 'Economic Indicator Index'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column employment_rate
+	column p_rate
 		dataType: double
-		lineageTag: c019e784-0e50-47f3-83f1-31231cf6b67a
+		lineageTag: 75851845-3cb8-4f1f-822b-043da02fc4cc
 		summarizeBy: sum
-		sourceColumn: employment_rate
+		sourceColumn: p_rate
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column unemployment_rate
+	column u_rate
 		dataType: double
-		lineageTag: 2749e2b4-9f65-4b7b-98f2-8b988481ec63
+		lineageTag: c7521483-b287-441b-88cb-a0838d01de4c
 		summarizeBy: sum
-		sourceColumn: unemployment_rate
+		sourceColumn: u_rate
 
 		annotation SummarizationSetBy = Automatic
 
@@ -63,7 +63,7 @@ table 'Economic Indicator Index'
 
 	column lf_unemployed
 		dataType: double
-		lineageTag: d38c6892-acb1-42bc-8e57-204a927d13eb
+		lineageTag: 2a8a866c-e344-488b-b179-f900550465ad
 		summarizeBy: sum
 		sourceColumn: lf_unemployed
 
@@ -73,7 +73,7 @@ table 'Economic Indicator Index'
 
 	column lf_outside
 		dataType: double
-		lineageTag: 8cfe7b97-91fd-4b90-bb9e-93a223018c40
+		lineageTag: 60544a8a-b21f-45ed-b172-2b61b180d97e
 		summarizeBy: sum
 		sourceColumn: lf_outside
 
@@ -83,7 +83,7 @@ table 'Economic Indicator Index'
 
 	column ep_ratio
 		dataType: double
-		lineageTag: 2ee16a7d-4958-4b07-bc59-e01bc4ef63ed
+		lineageTag: aa443856-5058-4410-b222-f6e93300f4e7
 		summarizeBy: sum
 		sourceColumn: ep_ratio
 
@@ -93,7 +93,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag1
 		dataType: double
-		lineageTag: 61f4e10d-2ebb-48e6-a662-148d011a35da
+		lineageTag: 16cbb182-15d6-4138-b73f-1ccf3632c598
 		summarizeBy: sum
 		sourceColumn: inflation_lag1
 
@@ -103,7 +103,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag2
 		dataType: double
-		lineageTag: ba723951-6519-4877-bf62-0ff4e3102201
+		lineageTag: ea8acb80-3104-4ac2-a3bd-9c0adfb33c71
 		summarizeBy: sum
 		sourceColumn: inflation_lag2
 
@@ -113,7 +113,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag3
 		dataType: double
-		lineageTag: 9c3835b3-81e3-4505-b487-1698b98225c5
+		lineageTag: cd57cc19-185b-429c-81ab-0983a66e9c4b
 		summarizeBy: sum
 		sourceColumn: inflation_lag3
 
@@ -123,7 +123,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag4
 		dataType: double
-		lineageTag: de8f45b9-de35-423d-9da9-34d08922371f
+		lineageTag: f8b525f0-5bc1-4f32-9546-e6263055e001
 		summarizeBy: sum
 		sourceColumn: inflation_lag4
 
@@ -133,7 +133,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag5
 		dataType: double
-		lineageTag: d28352f7-e38b-4054-8125-edd2784d91dd
+		lineageTag: 027d7fa7-fa77-491f-af9a-ad8a9bebae63
 		summarizeBy: sum
 		sourceColumn: inflation_lag5
 
@@ -143,7 +143,7 @@ table 'Economic Indicator Index'
 
 	column inflation_lag6
 		dataType: double
-		lineageTag: 24569f3a-db39-43bb-8863-7b8d5f793c0e
+		lineageTag: 6e1e2829-199b-4de5-a325-bc75c5717dc1
 		summarizeBy: sum
 		sourceColumn: inflation_lag6
 
@@ -152,17 +152,18 @@ table 'Economic Indicator Index'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column time_index
-		dataType: int64
-		formatString: 0
-		lineageTag: 4e09dbdc-ccea-454b-9a4c-fd7dcea724bf
+		dataType: double
+		lineageTag: a321203f-d9b9-42e6-9ea5-abf4349452fa
 		summarizeBy: sum
 		sourceColumn: time_index
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ppi_ma3
 		dataType: double
-		lineageTag: 9bc6891c-8708-41bd-9e2c-2df94de1dfbf
+		lineageTag: e776d7c3-b6f8-480d-9d64-a1c51eb62386
 		summarizeBy: sum
 		sourceColumn: ppi_ma3
 
@@ -172,7 +173,7 @@ table 'Economic Indicator Index'
 
 	column u_rate_ma3
 		dataType: double
-		lineageTag: c8f2810e-084b-4791-9b48-84e961f3056c
+		lineageTag: 3333915d-cca6-41c7-b2cc-bf68e9236b65
 		summarizeBy: sum
 		sourceColumn: u_rate_ma3
 
@@ -182,7 +183,7 @@ table 'Economic Indicator Index'
 
 	column economic_indicator_index
 		dataType: double
-		lineageTag: bd06a2dc-7f5d-42b4-bd77-67c959feff4c
+		lineageTag: 7c187a09-f679-4cb2-94df-e3ad965cf44d
 		summarizeBy: sum
 		sourceColumn: economic_indicator_index
 
@@ -192,7 +193,7 @@ table 'Economic Indicator Index'
 
 	column economic_indicator_index_norm
 		dataType: double
-		lineageTag: 07c6eead-1caf-420d-91d8-67e091c254fb
+		lineageTag: 967beb3c-571e-4221-96b3-c53a53f4cc38
 		summarizeBy: sum
 		sourceColumn: economic_indicator_index_norm
 
@@ -200,29 +201,20 @@ table 'Economic Indicator Index'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column Date = DATE(2010, 1, 1)
-		formatString: General Date
-		lineageTag: ab76d209-6315-4675-8bf5-6bcdac06b389
-		summarizeBy: none
-
-		variation Variation
-			isDefault
-			relationship: 5229cf7f-f858-4294-a101-17f9b7867f4f
-			defaultHierarchy: LocalDateTable_618f2da9-f8c8-4b0c-8587-287fece73b90.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-	partition 'Economic Indicator Index' = m
+	partition 'Econominc Indicator' = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\economic_indicator.csv"),[Delimiter=",", Columns=23, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\economic_indicator_new.csv"),[Delimiter=",", Columns=23, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"Unnamed: 0", Int64.Type}, {"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}, {"inflation_lag1", type number}, {"inflation_lag2", type number}, {"inflation_lag3", type number}, {"inflation_lag4", type number}, {"inflation_lag5", type number}, {"inflation_lag6", type number}, {"time_index", Int64.Type}, {"ppi_ma3", type number}, {"u_rate_ma3", type number}, {"economic_indicator_index", type number}, {"economic_indicator_index_norm", type number}, {"is_forecasted", Int64.Type}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"is_forecasted", "", "Unnamed: 0"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"p_rate", "employment_rate"}, {"u_rate", "unemployment_rate"}})
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"", "Unnamed: 0"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}, {"inflation_lag1", type number}, {"inflation_lag2", type number}, {"inflation_lag3", type number}, {"inflation_lag4", type number}, {"inflation_lag5", type number}, {"inflation_lag6", type number}, {"time_index", type number}, {"ppi_ma3", type number}, {"u_rate_ma3", type number}, {"economic_indicator_index", type number}, {"economic_indicator_index_norm", type number}, {"is_forecasted", type number}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"is_forecasted"})
 				in
-				    #"Renamed Columns"
+				    #"Removed Columns1"
+
+	changedProperty = Name
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -203,7 +203,7 @@ table 'Economic Indicator'
 
 	column Date =
 			
-			VAR StartDate = DATE(2020, 1, 1) -- Change to your actual first month
+			VAR StartDate = DATE(2010, 1, 1) -- Change to your actual first month
 			RETURN
 			EDATE(StartDate, [time_index])
 		formatString: General Date

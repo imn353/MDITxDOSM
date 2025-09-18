@@ -5,7 +5,7 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 2350.4993072356383,
-        "y": 390608.23280518979
+        "y": 584937.32301467669
       },
       "nodes": [
         {
@@ -273,7 +273,7 @@
             "x": 3590.76566888623,
             "y": 585570.97157015069
           },
-          "nodeIndex": "Econominc Indicator",
+          "nodeIndex": "Economic Indicator",
           "size": {
             "height": 300,
             "width": 234

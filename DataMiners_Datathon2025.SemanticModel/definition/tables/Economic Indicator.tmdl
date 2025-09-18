@@ -1,4 +1,4 @@
-table 'Econominc Indicator'
+table 'Economic Indicator'
 	lineageTag: ee132f17-c12d-4094-839f-48db40001f70
 
 	column inflation
@@ -201,7 +201,23 @@ table 'Econominc Indicator'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition 'Econominc Indicator' = m
+	column Date =
+			
+			VAR StartDate = DATE(2020, 1, 1) -- Change to your actual first month
+			RETURN
+			EDATE(StartDate, [time_index])
+		formatString: General Date
+		lineageTag: 8fe24b44-01e9-442a-9065-59f3c3a13904
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 79a931e8-7d78-417e-bd19-1cdcb9b13aba
+			defaultHierarchy: LocalDateTable_7fb86b8f-9432-47ad-b85d-aae6d88b050b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Economic Indicator' = m
 		mode: import
 		source =
 				let

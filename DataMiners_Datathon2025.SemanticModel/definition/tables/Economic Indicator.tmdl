@@ -213,7 +213,7 @@ table 'Economic Indicator'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\user\Personal-Projects\mditxdd_datathon\economic_indicator_table.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\economic_indicator_table.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"date", type date}, {"inflation", type number}, {"ppi", type number}, {"cpi", type number}, {"lf", type number}, {"p_rate", type number}, {"u_rate", type number}, {"lf_unemployed", type number}, {"lf_outside", type number}, {"ep_ratio", type number}}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"date", ""}),

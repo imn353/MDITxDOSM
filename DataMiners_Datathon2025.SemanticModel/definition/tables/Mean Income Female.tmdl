@@ -48,9 +48,10 @@ table 'Mean Income Female'
 				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","2020r","2020",Replacer.ReplaceText,{"Year"}),
 				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2021r","2021",Replacer.ReplaceText,{"Year"}),
 				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","2022r","2022",Replacer.ReplaceText,{"Year"}),
-				    #"Added Custom" = Table.AddColumn(#"Replaced Value2", "Gender", each "Female")
+				    #"Added Custom" = Table.AddColumn(#"Replaced Value2", "Gender", each "Female"),
+				    Custom1 = #"Added Custom"
 				in
-				    #"Added Custom"
+				    Custom1
 
 	annotation PBI_NavigationStepName = Navigation
 

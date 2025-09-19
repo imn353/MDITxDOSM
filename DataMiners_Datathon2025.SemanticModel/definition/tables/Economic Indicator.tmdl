@@ -268,8 +268,6 @@ table 'Economic Indicator'
 				in
 				    #"Removed Columns1"
 
-	changedProperty = Name
-
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table

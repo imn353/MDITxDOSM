@@ -19,19 +19,25 @@ table 'Economic Indicator'
 
 	measure 'Selected Feature Value' = ```
 			
-			VAR SelectedFeature = SELECTEDVALUE('PCA_Loadings'[feature])
+			VAR SelectedFeature = SELECTEDVALUE('Pca Loading'[feature])
 			RETURN
 			SWITCH(
 			    SelectedFeature,
-			    "inflation", SELECTEDVALUE('Economic Indicator'[inflation]),
-			    "ppi", SELECTEDVALUE('Economic Indicator'[ppi]),
-			    "lf", SELECTEDVALUE('Economic Indicator'[lf]),
-			    "p_rate", SELECTEDVALUE('Economic Indicator'[p_rate]),
-			    "u_rate", SELECTEDVALUE('Economic Indicator'[u_rate])
+			    "inflation", AVERAGE('Economic Indicator'[inflation]),
+			    "ppi", AVERAGE('Economic Indicator'[ppi]),
+			    "lf", AVERAGE('Economic Indicator'[lf]),
+			    "p_rate", AVERAGE('Economic Indicator'[p_rate]),
+			    "u_rate", AVERAGE('Economic Indicator'[u_rate]),
+			    "lf_unemployed", AVERAGE('Economic Indicator'[lf_unemployed]),
+			    "lf_outside", AVERAGE('Economic Indicator'[lf_outside]),
+			    "cpi", AVERAGE('Economic Indicator'[cpi]),
+			    BLANK()
 			)
 			
 			```
 		lineageTag: 09b27303-5e4e-417d-b873-4fdd4ae3b4a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column inflation
 		dataType: double

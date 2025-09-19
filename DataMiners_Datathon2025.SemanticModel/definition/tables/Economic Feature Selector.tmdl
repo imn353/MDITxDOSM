@@ -1,0 +1,64 @@
+table 'Economic Feature Selector'
+	lineageTag: ebe8bd90-f2ea-4fd8-a3e6-115638048f07
+
+	measure 'Selected Feature Values' = ```
+			
+			SUMX(
+			    'Economic Feature Selector',
+			    CALCULATE(AVERAGE('Economic Indicator'[Parameter Fields]))
+			)
+			
+			```
+		lineageTag: 9a66b7f4-4ec9-4149-abc9-97ae83b7ef45
+
+	column 'Economic Feature Selector'
+		lineageTag: 31220137-4f77-47d4-81a7-85e22c8b7c4d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Economic Feature Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Economic Feature Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Economic Feature Selector Fields'
+		isHidden
+		lineageTag: ff50cb89-7da2-4517-8983-afb1c0da00d4
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Economic Feature Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Economic Feature Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: b5a36bdf-ac33-4c89-8860-2026aecc1681
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Economic Feature Selector' = calculated
+		mode: import
+		source =
+				{
+				    ("inflation", NAMEOF('Economic Indicator'[inflation]), 0),
+				    ("lf", NAMEOF('Economic Indicator'[lf]), 1),
+				    ("lf_outside", NAMEOF('Economic Indicator'[lf_outside]), 2),
+				    ("lf_unemployed", NAMEOF('Economic Indicator'[lf_unemployed]), 3),
+				    ("p_rate", NAMEOF('Economic Indicator'[p_rate]), 4),
+				    ("u_rate", NAMEOF('Economic Indicator'[u_rate]), 5),
+				    ("ppi", NAMEOF('Economic Indicator'[ppi]), 6),
+				    ("cpi", NAMEOF('Economic Indicator'[cpi]), 7)
+				}
+
+	annotation PBI_Id = d268662a141e437bb0b82dbe748ea24b
+

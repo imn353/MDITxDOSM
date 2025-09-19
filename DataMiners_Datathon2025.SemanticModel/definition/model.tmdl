@@ -7,7 +7,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["Annual Inflation Rate","Monthly CPI Index By State","Monthly Household Income By State","Monthly Inflation Rate By State","Innequality By State","Poverty By State","Annual CPI Index","Annual Household Income","Mean Income Overall","Mean Income Male","Mean Income By Highest Certificate","Mean Income By Strata","Mean Income By State","Mean Income By Sector","Mean Income Female","Mean Income By Gender","Annual CPI Index By Category","mcoicop","Economic Indicator","Labor Force Statistics"]
+annotation PBI_QueryOrder = ["Annual Inflation Rate","Monthly CPI Index By State","Monthly Household Income By State","Monthly Inflation Rate By State","Innequality By State","Poverty By State","Annual CPI Index","Annual Household Income","Mean Income Overall","Mean Income Male","Mean Income By Highest Certificate","Mean Income By Strata","Mean Income By State","Mean Income By Sector","Mean Income Female","Mean Income By Gender","Annual CPI Index By Category","mcoicop","Economic Indicator","Labor Force Statistics","Pca Loading"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -47,6 +47,7 @@ ref table 'Economic Indicator'
 ref table LocalDateTable_7fb86b8f-9432-47ad-b85d-aae6d88b050b
 ref table 'Labor Force Statistics'
 ref table LocalDateTable_85b6574c-bbda-4fcd-ac92-a9d45c3abae6
+ref table 'Pca Loading'
 
 ref cultureInfo en-US
 

@@ -1,0 +1,38 @@
+table 'Pca Loading'
+	lineageTag: 070603aa-7eb4-49e9-a823-fae7ddc0dc75
+
+	column feature
+		dataType: string
+		lineageTag: 91cb5e55-21ba-4458-9e09-c17d3f704489
+		summarizeBy: none
+		sourceColumn: feature
+
+		annotation SummarizationSetBy = Automatic
+
+	column pca_loading
+		dataType: double
+		lineageTag: bd6e159a-e283-4e16-86e2-0c0299a780b9
+		summarizeBy: sum
+		sourceColumn: pca_loading
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Pca Loading' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\pca_loadings.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Feature", type text}, {"PCA_Loading", type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"PCA_Loading", "pca_loading"}, {"Feature", "feature"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

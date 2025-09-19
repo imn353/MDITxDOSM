@@ -5,13 +5,13 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 2350.4993072356383,
-        "y": 584937.53762188589
+        "y": 1316737.348658548
       },
       "nodes": [
         {
           "location": {
             "x": 1562.8504260547716,
-            "y": 1755564.8610021851
+            "y": 2487364.8866460565
           },
           "nodeIndex": "Annual Inflation Rate",
           "nodeLineageTag": "d2f6c2ec-e233-461f-8f5e-924e6404d336",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 831.78245545030131,
-            "y": 1755256.5198411215
+            "y": 2487056.5454849927
           },
           "nodeIndex": "Monthly CPI Index By State",
           "nodeLineageTag": "875e7709-3365-4225-9fdb-d4444bedf50c",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 1328.8092863572369,
-            "y": 1755046.9370912553
+            "y": 2486846.9627351267
           },
           "nodeIndex": "Monthly Household Income By State",
           "nodeLineageTag": "a557d08c-51c0-4632-896f-b5d01d67309d",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 853.14449221402754,
-            "y": 1754976.3769731054
+            "y": 2486776.4026169768
           },
           "nodeIndex": "Monthly Inflation Rate By State",
           "nodeLineageTag": "70406f9c-2576-4d0d-ba6a-4e4725188e30",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 724.252901177255,
-            "y": 1755911.3345286527
+            "y": 2487711.3601725241
           },
           "nodeIndex": "Innequality By State",
           "nodeLineageTag": "2ec36684-b1c6-4fd6-a4e5-1e37bf179b3f",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 746.52165407959819,
-            "y": 1754664.6488846478
+            "y": 2486464.6745285187
           },
           "nodeIndex": "Poverty By State",
           "nodeLineageTag": "501cfcad-6422-4226-a909-5ac1c003d0c8",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 3014.9921507324207,
-            "y": 1755864.1365884689
+            "y": 2487664.1622323403
           },
           "nodeIndex": "Annual CPI Index",
           "nodeLineageTag": "42cd9383-39e6-4d86-af19-0517bfe05c70",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 1112.2728078758341,
-            "y": 1754803.2808104421
+            "y": 2486603.306454313
           },
           "nodeIndex": "Annual Household Income",
           "nodeLineageTag": "8ac65470-d433-4574-8e90-6b7a38c6481e",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 1170.1618358785586,
-            "y": 1756130.7909250103
+            "y": 2487930.8165688813
           },
           "nodeIndex": "Annual Average Inflation By State",
           "nodeLineageTag": "97e0bdd6-b911-492c-9a76-d7f470e42ce7",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 2700.2466412173176,
-            "y": 1755244.8232898063
+            "y": 2487044.8489336772
           },
           "nodeIndex": "Mean Income By Gender",
           "nodeLineageTag": "71397231-83da-499e-8ec1-e7b75b71d3e0",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 2553.4475757387113,
-            "y": 1755867.3608635513
+            "y": 2487667.3865074227
           },
           "nodeIndex": "Mean Income By Highest Certificate",
           "nodeLineageTag": "3aaacf36-d5a9-46e6-9def-185595236680",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 1769.6799948465014,
-            "y": 1755186.7890598748
+            "y": 2486986.8147037458
           },
           "nodeIndex": "Mean Income By Sector",
           "nodeLineageTag": "be0ebf76-4583-4817-9cc3-26b71b255784",
@@ -167,7 +167,7 @@
         {
           "location": {
             "x": 1669.9883142540198,
-            "y": 1755878.2974992038
+            "y": 2487678.3231430752
           },
           "nodeIndex": "Mean Income By State",
           "nodeLineageTag": "8e795d35-a822-4030-83cc-5ff075e3ddc0",
@@ -180,7 +180,7 @@
         {
           "location": {
             "x": 4031.0185700634852,
-            "y": 1755642.4307905477
+            "y": 2487442.4564344194
           },
           "nodeIndex": "Mean Income By Strata",
           "nodeLineageTag": "9ca6b2da-9b2f-4a2b-a14c-2f8732a8b287",
@@ -193,7 +193,7 @@
         {
           "location": {
             "x": 3128.1620278898886,
-            "y": 1755143.0527658847
+            "y": 2486943.0784097556
           },
           "nodeIndex": "Mean Income Female",
           "nodeLineageTag": "fe0f5746-13a4-4384-aaa1-e40393f913e9",
@@ -206,7 +206,7 @@
         {
           "location": {
             "x": 3052.0266346148478,
-            "y": 1755395.1996325392
+            "y": 2487195.2252764106
           },
           "nodeIndex": "Mean Income Male",
           "nodeLineageTag": "f8dee326-b1ec-469d-a9df-f19c87d965d9",
@@ -219,7 +219,7 @@
         {
           "location": {
             "x": 2249.7431848394608,
-            "y": 1755387.6778243564
+            "y": 2487187.7034682278
           },
           "nodeIndex": "Mean Income Overall",
           "nodeLineageTag": "4a7d41dd-25be-4ce0-80f4-721afbb938a5",
@@ -232,7 +232,7 @@
         {
           "location": {
             "x": 1082.567669799756,
-            "y": 1755515.9651328956
+            "y": 2487315.990776767
           },
           "nodeIndex": "Annual Average CPI Index By State",
           "nodeLineageTag": "60ea5383-05df-4264-80bd-b532bfced402",
@@ -245,7 +245,7 @@
         {
           "location": {
             "x": 2401.3553138685761,
-            "y": 1756172.4812780845
+            "y": 2487972.5069219554
           },
           "nodeIndex": "Annual CPI Index By Category",
           "nodeLineageTag": "5b30377a-faba-457c-a6b0-840db3a84e73",
@@ -258,7 +258,7 @@
         {
           "location": {
             "x": 1896.5502834799854,
-            "y": 1756185.159435184
+            "y": 2487985.1850790549
           },
           "nodeIndex": "mcoicop",
           "nodeLineageTag": "36781f64-7404-4b07-9a3c-155ea743633b",
@@ -271,11 +271,36 @@
         {
           "location": {
             "x": 3590.76566888623,
-            "y": 585570.97157015069
+            "y": 1317370.9972140221
           },
           "nodeIndex": "Economic Indicator",
           "size": {
             "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3590.76566888623,
+            "y": 1317043.619576388
+          },
+          "nodeIndex": "Labor Force Statistics",
+          "nodeLineageTag": "b151b26e-ad4d-4bfb-a0a8-ec6f96b4a7ae",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3590.76566888623,
+            "y": 1024493.8226101296
+          },
+          "nodeIndex": "Pca Loading",
+          "size": {
+            "height": 128,
             "width": 234
           },
           "zIndex": 0

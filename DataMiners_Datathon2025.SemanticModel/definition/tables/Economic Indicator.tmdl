@@ -17,6 +17,22 @@ table 'Economic Indicator'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Selected Feature Value' = ```
+			
+			VAR SelectedFeature = SELECTEDVALUE('PCA_Loadings'[feature])
+			RETURN
+			SWITCH(
+			    SelectedFeature,
+			    "inflation", SELECTEDVALUE('Economic Indicator'[inflation]),
+			    "ppi", SELECTEDVALUE('Economic Indicator'[ppi]),
+			    "lf", SELECTEDVALUE('Economic Indicator'[lf]),
+			    "p_rate", SELECTEDVALUE('Economic Indicator'[p_rate]),
+			    "u_rate", SELECTEDVALUE('Economic Indicator'[u_rate])
+			)
+			
+			```
+		lineageTag: 09b27303-5e4e-417d-b873-4fdd4ae3b4a9
+
 	column inflation
 		dataType: double
 		lineageTag: c7cb18ec-c5f0-4fb6-8588-fd3f1e582744

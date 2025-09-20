@@ -9334,19 +9334,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "inflation"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Average Inflation": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "economic_indicator.economic_indicator_index_norm": {
 			      "Definition": {

@@ -9326,6 +9326,69 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "economic_indicator.inflation": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Economic Indicator",
+			          "ConceptualProperty": "inflation"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Inflation": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "economic_indicator.economic_indicator_index_norm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Economic Indicator",
+			          "ConceptualProperty": "economic_indicator_index_norm"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Economic Indicator Index": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "economic_indicator.selected_feature_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Economic Indicator",
+			          "ConceptualProperty": "Selected Feature Value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Economic Feature": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {

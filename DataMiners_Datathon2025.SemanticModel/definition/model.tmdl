@@ -13,8 +13,6 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 
-annotation PBIDesktopVersion = 2.146.705.0 (25.08)+b71502aff0a01340c88f384884ef42771068f115
-
 ref table DateTableTemplate_71c91634-1740-4f45-ba28-d76be45ab146
 ref table 'Annual Inflation Rate'
 ref table 'Monthly CPI Index By State'

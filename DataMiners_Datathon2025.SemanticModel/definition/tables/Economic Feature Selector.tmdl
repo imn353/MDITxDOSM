@@ -51,13 +51,13 @@ table 'Economic Feature Selector'
 		source =
 				{
 				    ("inflation", NAMEOF('Economic Indicator'[inflation]), 0),
-				    ("lf", NAMEOF('Economic Indicator'[lf]), 1),
+				    ("labor force", NAMEOF('Economic Indicator'[lf]), 1),
 				    ("lf_outside", NAMEOF('Economic Indicator'[lf_outside]), 2),
 				    ("lf_unemployed", NAMEOF('Economic Indicator'[lf_unemployed]), 3),
-				    ("p_rate", NAMEOF('Economic Indicator'[p_rate]), 4),
-				    ("u_rate", NAMEOF('Economic Indicator'[u_rate]), 5),
-				    ("ppi", NAMEOF('Economic Indicator'[ppi]), 6),
-				    ("cpi", NAMEOF('Economic Indicator'[cpi]), 7)
+				    ("employment rate", NAMEOF('Economic Indicator'[p_rate]), 4),
+				    ("unemployment rate", NAMEOF('Economic Indicator'[u_rate]), 5),
+				    ("PPI index", NAMEOF('Economic Indicator'[ppi]), 6),
+				    ("CPI index", NAMEOF('Economic Indicator'[cpi]), 7)
 				}
 
 	annotation PBI_Id = d268662a141e437bb0b82dbe748ea24b

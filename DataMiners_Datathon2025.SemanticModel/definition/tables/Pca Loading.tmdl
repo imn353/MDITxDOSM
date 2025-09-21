@@ -26,11 +26,19 @@ table 'Pca Loading'
 				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\MDITxDOSM\dataset\pca_loadings.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Feature", type text}, {"PCA_Loading", type number}}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"PCA_Loading", "pca_loading"}, {"Feature", "feature"}})
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"PCA_Loading", "pca_loading"}, {"Feature", "feature"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","ppi","PPI index",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","cpi","CPI index",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","lf","labor force",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","p_rate","employment rate",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","u_rate","unemployment rate",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","inflation","Inflation",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","labor force","Labor Force Size",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","employment rate","Employment Rate",Replacer.ReplaceText,{"feature"}),
+				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","unEmployment Rate","Unemployment Rate",Replacer.ReplaceText,{"feature"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value8", each ([feature] <> "Labor Force Size_outside" and [feature] <> "Labor Force Size_unemployed"))
 				in
-				    #"Renamed Columns"
-
-	changedProperty = Name
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

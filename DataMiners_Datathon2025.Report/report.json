@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.95\",\"report\":\"2.0.95\",\"page\":\"1.3.95\"}}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.95\",\"report\":\"2.0.95\",\"page\":\"1.3.95\"}}},\"activeSectionIndex\":2,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "pods": [
     {
@@ -42,7 +42,7 @@
   "sections": [
     {
       "config": "{\"relationships\":[{\"source\":\"ae5929209a2141d330ce\",\"target\":\"c507a5c689a55d7923e1\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"ae5929209a2141d330ce\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"93c88f5fb1f8e1f24d3b\",\"type\":3},{\"source\":\"98e45b266525e7435bf8\",\"target\":\"c507a5c689a55d7923e1\",\"type\":3},{\"source\":\"98e45b266525e7435bf8\",\"target\":\"ae5929209a2141d330ce\",\"type\":3},{\"source\":\"5a71321ddf813a255959\",\"target\":\"93c88f5fb1f8e1f24d3b\",\"type\":3},{\"source\":\"ae5929209a2141d330ce\",\"target\":\"93c88f5fb1f8e1f24d3b\",\"type\":3},{\"source\":\"ae5929209a2141d330ce\",\"target\":\"6b3dd6258265c86f71c9\",\"type\":3},{\"source\":\"ae5929209a2141d330ce\",\"target\":\"d898f387e623794a14af\",\"type\":3},{\"source\":\"ae5929209a2141d330ce\",\"target\":\"5a71321ddf813a255959\",\"type\":3},{\"source\":\"ae5929209a2141d330ce\",\"target\":\"98e45b266525e7435bf8\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"98e45b266525e7435bf8\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"5a71321ddf813a255959\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"d898f387e623794a14af\",\"type\":3},{\"source\":\"c507a5c689a55d7923e1\",\"target\":\"6b3dd6258265c86f71c9\",\"type\":3}],\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"183L\"}}}}}]},\"filterSortOrder\":3}",
-      "displayName": "Page 2",
+      "displayName": "Inflation and Inequality Overview by States",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,
@@ -135,7 +135,7 @@
     },
     {
       "config": "{\"relationships\":[{\"source\":\"a1feec74ca68317e4803\",\"target\":\"8a73fbbbd865eb40ae85\",\"type\":1},{\"source\":\"a1feec74ca68317e4803\",\"target\":\"9c829a746df9514fb500\",\"type\":1}]}",
-      "displayName": "Page 3",
+      "displayName": "Economic Indicator Index Analysis",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,
@@ -192,7 +192,7 @@
     },
     {
       "config": "{}",
-      "displayName": "Page 1",
+      "displayName": "National Labour and Inflation Overview",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,

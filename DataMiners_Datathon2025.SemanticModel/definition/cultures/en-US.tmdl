@@ -7083,7 +7083,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Real Wage Index By State": {
+			          "Real Wage Index": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7206,6 +7206,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "Wage Index": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
